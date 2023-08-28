@@ -1,0 +1,8 @@
+server.public=
+ca.public=
+server.pkcs8=
+server.port =
+server.module.pub.dir =
+
+modules = module://demo?version=1.0.0;2.0.0
+

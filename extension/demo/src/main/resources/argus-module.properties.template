@@ -1,0 +1,8 @@
+center.host =
+center.port =
+module.name = demo
+module.version = 1.0.0
+
+module.public =
+ca.public =
+module.pkcs8 =

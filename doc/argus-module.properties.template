@@ -1,0 +1,14 @@
+#模块需要连接到的argus中心服务host地址
+center.host=
+#模块需要连接到的argus中心服务port端口
+center.port=
+#模块的名称
+module.name=
+#当前模块的版本号
+module.version=
+#模块的证书公钥路径(.pem文件)
+module.public=
+#ca证书公钥路径（.pem）
+ca.public=
+#模块的证书私钥路径（pkcs8.key）
+module.pkcs8=
