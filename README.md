@@ -2,6 +2,8 @@
   <img src="doc/argus-logo.png" width="288" >
 </div>
 
+[![License](https://img.shields.io/badge/license-Apache%202-5BB9BC.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)  [![CN doc](https://img.shields.io/badge/文档-中文版-5BB9BC.svg)](README_zh_CN.md)
+
 ## 🚀 Introduction
 
 Argus is a result review engine that prevents data leakage and ensures out-of-domain result traceability with functions such as sensitive data identification, data and AI model watermarking, and AI model-entrapped data scanning. It's the last line of defense for data leaving the domain, providing users with a strong guarantee.
