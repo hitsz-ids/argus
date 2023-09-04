@@ -7,11 +7,11 @@ import io.grpc.netty.shaded.io.grpc.netty.NegotiationType;
 import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import io.grpc.netty.shaded.io.netty.handler.ssl.SslContext;
 import io.grpc.stub.MetadataUtils;
-import io.ids.argus.core.common.GrpcCommon;
-import io.ids.argus.core.conf.ArgusLogger;
-import io.ids.argus.core.exception.ArgusScannerException;
-import io.ids.argus.core.grpc.*;
-import io.ids.argus.core.utils.Security;
+import io.ids.argus.core.base.conf.ArgusLogger;
+import io.ids.argus.core.base.exception.ArgusScannerException;
+import io.ids.argus.core.base.utils.Constant;
+import io.ids.argus.core.base.utils.Security;
+import io.ids.argus.core.transport.grpc.*;
 import io.ids.argus.module.conf.ModuleProperties;
 import io.ids.argus.module.context.ModuleContext;
 import io.ids.argus.module.observer.Connector;
@@ -75,7 +75,7 @@ public class ArgusClient implements ObserverListener {
             createChannel();
             var header = new Metadata();
             Metadata.Key<String> requestId =
-                    Metadata.Key.of(GrpcCommon.HEADER_REQUEST_ID, Metadata.ASCII_STRING_MARSHALLER);
+                    Metadata.Key.of(Constant.HEADER_REQUEST_ID, Metadata.ASCII_STRING_MARSHALLER);
             header.put(requestId, id);
             FetchServiceGrpc.FetchServiceStub fetch = FetchServiceGrpc.newStub(channel)
                     .withInterceptors(MetadataUtils.newAttachHeadersInterceptor(header));
@@ -92,8 +92,8 @@ public class ArgusClient implements ObserverListener {
         try {
             String signData = Security.sign(ModuleProperties.get().getPKcs8(), module.getName());
             Metadata.Key<String> name =
-                    Metadata.Key.of(GrpcCommon.HEADER_MODULE_NAME, Metadata.ASCII_STRING_MARSHALLER);
-            Metadata.Key<String> versionHeader = Metadata.Key.of(GrpcCommon.HEADER_MODULE_VERSION,
+                    Metadata.Key.of(Constant.HEADER_MODULE_NAME, Metadata.ASCII_STRING_MARSHALLER);
+            Metadata.Key<String> versionHeader = Metadata.Key.of(Constant.HEADER_MODULE_VERSION,
                     Metadata.ASCII_STRING_MARSHALLER);
             header.put(versionHeader, module.getVersion());
             header.put(name, signData);

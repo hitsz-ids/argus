@@ -1,9 +1,10 @@
 package io.ids.argus.module.context;
 
-import io.ids.argus.core.common.Namespace;
-import io.ids.argus.core.enviroment.ArgusContext;
-import io.ids.argus.core.enviroment.invoker.Invoker;
-import io.ids.argus.core.module.IArgusController;
+
+import io.ids.argus.core.base.common.Namespace;
+import io.ids.argus.core.base.enviroment.context.ArgusContext;
+import io.ids.argus.core.base.enviroment.invoker.Invoker;
+import io.ids.argus.core.base.module.IArgusController;
 
 import java.lang.reflect.Method;
 

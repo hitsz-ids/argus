@@ -3,9 +3,9 @@ package io.ids.argus.module.observer;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
-import io.ids.argus.core.conf.ArgusLogger;
-import io.ids.argus.core.grpc.ArgusModule;
-import io.ids.argus.core.grpc.OpenResponse;
+import io.ids.argus.core.base.conf.ArgusLogger;
+import io.ids.argus.core.transport.grpc.ArgusModule;
+import io.ids.argus.core.transport.grpc.OpenResponse;
 
 import java.util.Objects;
 import java.util.concurrent.CountDownLatch;

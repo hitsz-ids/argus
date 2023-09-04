@@ -1,7 +1,6 @@
 package io.ids.argus.module.observer;
 
-import io.grpc.Status;
-import io.ids.argus.core.grpc.OpenResponse;
+import io.ids.argus.core.transport.grpc.OpenResponse;
 
 public interface ObserverListener {
     /**

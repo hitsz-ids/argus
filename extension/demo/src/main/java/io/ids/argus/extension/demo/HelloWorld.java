@@ -1,6 +1,6 @@
 package io.ids.argus.extension.demo;
 
-import io.ids.argus.core.enviroment.invoker.InvokeOutput;
+import io.ids.argus.core.base.enviroment.invoker.InvokeOutput;
 import lombok.Data;
 
 @Data
