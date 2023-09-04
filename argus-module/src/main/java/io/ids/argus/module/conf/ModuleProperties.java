@@ -8,9 +8,13 @@ public class ModuleProperties extends ArgusProperties {
 
     private static final ModuleProperties instance = new ModuleProperties();
 
+    private ModuleProperties() {
+    }
+
     public static ModuleProperties get() {
         return instance;
     }
+
     @Override
     public String initPath() {
         return PROPERTIES_PATH;
@@ -35,6 +39,7 @@ public class ModuleProperties extends ArgusProperties {
     public Integer getCenterPort() {
         return getInt("center.port");
     }
+
     public String getName() {
         return getString("module.name");
     }

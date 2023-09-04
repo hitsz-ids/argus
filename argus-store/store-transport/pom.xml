@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>io.ids.argus.store</groupId>
+        <artifactId>argus-store</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>io.ids.argus.store.transport</groupId>
+    <artifactId>store-transport</artifactId>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- grpc -->
+        <grpc.all.version>1.53.0</grpc.all.version>
+        <grpc.os.maven.version>1.6.2</grpc.os.maven.version>
+        <grpc.protoc.version>3.19.2</grpc.protoc.version>
+        <javax.annotation.version>1.3.2</javax.annotation.version>
+        <grpc.os.maven.version>1.6.2</grpc.os.maven.version>
+        <grpc.proto.plugin.version>0.6.1</grpc.proto.plugin.version>
+        <!-- grpc -->
+    </properties>
+   <dependencies>
+       <dependency>
+           <groupId>io.grpc</groupId>
+           <artifactId>grpc-netty-shaded</artifactId>
+           <version>${grpc.all.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>io.grpc</groupId>
+           <artifactId>grpc-protobuf</artifactId>
+           <version>${grpc.all.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>io.grpc</groupId>
+           <artifactId>grpc-stub</artifactId>
+           <version>${grpc.all.version}</version>
+       </dependency>
+       <dependency>
+           <groupId>javax.annotation</groupId>
+           <artifactId>javax.annotation-api</artifactId>
+           <version>${javax.annotation.version}</version>
+       </dependency>
+   </dependencies>
+    <build>
+        <extensions>
+            <extension>
+                <groupId>kr.motd.maven</groupId>
+                <artifactId>os-maven-plugin</artifactId>
+                <version>${grpc.os.maven.version}</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>${grpc.proto.plugin.version}</version>
+                <configuration>
+                    <protocArtifact>com.google.protobuf:protoc:${grpc.protoc.version}:exe:${os.detected.classifier}
+                    </protocArtifact>
+                    <pluginId>grpc-java</pluginId>
+                    <pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.all.version}:exe:${os.detected.classifier}
+                    </pluginArtifact>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>compile-custom</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+                <version>3.8.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

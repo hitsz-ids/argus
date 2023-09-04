@@ -1,6 +1,6 @@
 package io.ids.argus.center.startup;
 
-import io.ids.argus.core.json.ArgusJson;
+import io.ids.argus.core.base.json.ArgusJson;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

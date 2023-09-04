@@ -1,6 +1,6 @@
 package io.ids.argus.center.module;
 
-import io.ids.argus.core.grpc.ArgusModule;
+import io.ids.argus.core.transport.grpc.ArgusModule;
 
 import java.util.Map;
 import java.util.Objects;
@@ -11,9 +11,13 @@ public class LockPool {
     private static final LockPool poll = new LockPool();
     private static final Map<ArgusModule, ReentrantLock> lockMap = new ConcurrentHashMap<>();
 
+    private LockPool() {
+    }
+
     public static LockPool get() {
         return poll;
     }
+
     private ReentrantLock getLock(ArgusModule module) {
         var lock = lockMap.get(module);
         if (Objects.isNull(lock)) {

@@ -2,7 +2,7 @@ package io.ids.argus.center.startup;
 
 import io.ids.argus.center.module.ModuleManager;
 import io.ids.argus.center.service.RequestManager;
-import io.ids.argus.core.json.ArgusJson;
+import io.ids.argus.core.base.json.ArgusJson;
 
 import java.util.Objects;
 

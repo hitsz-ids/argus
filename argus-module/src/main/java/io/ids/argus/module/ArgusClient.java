@@ -14,11 +14,9 @@ import io.ids.argus.core.grpc.*;
 import io.ids.argus.core.utils.Security;
 import io.ids.argus.module.conf.ModuleProperties;
 import io.ids.argus.module.context.ModuleContext;
-import io.ids.argus.module.observer.Connection;
+import io.ids.argus.module.observer.Connector;
 import io.ids.argus.module.observer.FetchArgsObserver;
 import io.ids.argus.module.observer.ObserverListener;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import javax.net.ssl.SSLException;
 import java.io.IOException;
@@ -33,9 +31,8 @@ public class ArgusClient implements ObserverListener {
     private final ArgusLogger log = new ArgusLogger(ArgusClient.class);
     private ManagedChannel channel;
     private ArgusServiceGrpc.ArgusServiceStub stub;
-    private final Connection observer;
+    private final Connector observer;
     private final ArgusModule module;
-
     private final ModuleContext context;
     private static final int RECONNECT_TIME_OUT = 10;
 
@@ -47,7 +44,7 @@ public class ArgusClient implements ObserverListener {
                 .setName(name)
                 .setVersion(version)
                 .build();
-        observer = new Connection(module, this);
+        observer = new Connector(module, this);
     }
 
     public void start(Class<?> primarySource) throws SSLException, ArgusScannerException {

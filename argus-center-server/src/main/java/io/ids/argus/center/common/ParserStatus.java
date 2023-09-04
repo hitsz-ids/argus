@@ -1,6 +1,7 @@
 package io.ids.argus.center.common;
 
-import io.ids.argus.core.common.IStatus;
+import io.ids.argus.core.base.common.IStatus;
+import io.ids.argus.store.client.session.JobSession;
 
 public enum ParserStatus implements IStatus {
     NOT_FOUND_MODULE(12000, "未解析到对应【module】字段"),

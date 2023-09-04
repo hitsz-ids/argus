@@ -3,15 +3,12 @@ package io.ids.argus.center.module;
 import com.google.common.collect.Iterators;
 import io.ids.argus.center.conf.CenterProperties;
 import io.ids.argus.center.exception.ArgusURIException;
-import io.ids.argus.center.service.Connection;
-import io.ids.argus.core.conf.ArgusLogger;
-import io.ids.argus.core.grpc.ArgusModule;
-import io.ids.argus.core.utils.Security;
+import io.ids.argus.center.service.Connector;
+import io.ids.argus.core.base.conf.ArgusLogger;
+import io.ids.argus.core.base.utils.Security;
+import io.ids.argus.core.transport.grpc.ArgusModule;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.units.qual.A;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.net.URI;
@@ -31,7 +28,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ModuleManager {
     private final ArgusLogger log = new ArgusLogger(ModuleManager.class);
     private final List<Module> supports = new ArrayList<>();
-    private static final Map<ArgusModule, Connection> loginMap = new ConcurrentHashMap<>();
+    private static final Map<ArgusModule, Connector> loginMap = new ConcurrentHashMap<>();
     private static final ReentrantLock lock = new ReentrantLock();
 
     public static final ModuleManager instance = new ModuleManager();
@@ -46,6 +43,9 @@ public class ModuleManager {
 
     private static final String FILE_SEPARATOR = "/";
     private static final String MODULE_PUB_FILE_NAME = "module.pem";
+
+    private ModuleManager() {
+    }
 
     public static ModuleManager get() {
         return instance;
@@ -102,7 +102,7 @@ public class ModuleManager {
         }
     }
 
-    public Connection getConnection(String name, String version) {
+    public Connector getConnection(String name, String version) {
         lock.lock();
         try {
             return loginMap.get(ArgusModule.newBuilder()
@@ -128,10 +128,10 @@ public class ModuleManager {
         }
     }
 
-    public void login(ArgusModule module, Connection connection) {
+    public void login(ArgusModule module, Connector connector) {
         lock.lock();
         try {
-            loginMap.putIfAbsent(module, connection);
+            loginMap.putIfAbsent(module, connector);
         } finally {
             lock.unlock();
         }

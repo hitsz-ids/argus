@@ -2,9 +2,9 @@ package io.ids.argus.center.startup;
 
 import io.ids.argus.center.common.ParserStatus;
 import io.ids.argus.center.exception.ArgusProtocolException;
-import io.ids.argus.core.common.Namespace;
-import io.ids.argus.core.json.ArgusJson;
-import io.ids.argus.core.utils.Constant;
+import io.ids.argus.core.base.common.Namespace;
+import io.ids.argus.core.base.json.ArgusJson;
+import io.ids.argus.core.base.utils.Constant;
 import org.apache.commons.lang3.StringUtils;
 
 import java.net.URI;

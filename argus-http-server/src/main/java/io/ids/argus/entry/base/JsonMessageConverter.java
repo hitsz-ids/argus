@@ -4,7 +4,7 @@
 
 package io.ids.argus.entry.base;
 
-import io.ids.argus.core.json.Transformer;
+import io.ids.argus.core.base.json.Transformer;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;

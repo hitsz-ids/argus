@@ -2,12 +2,10 @@ package io.ids.argus.center.service;
 
 import com.google.protobuf.ByteString;
 import io.grpc.stub.StreamObserver;
-import io.ids.argus.core.conf.ArgusLogger;
-import io.ids.argus.core.grpc.FetchData;
-import io.ids.argus.core.grpc.FetchRequest;
-import io.ids.argus.core.grpc.FetchResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import io.ids.argus.core.base.conf.ArgusLogger;
+import io.ids.argus.core.transport.grpc.FetchData;
+import io.ids.argus.core.transport.grpc.FetchRequest;
+import io.ids.argus.core.transport.grpc.FetchResponse;
 
 import java.util.Objects;
 

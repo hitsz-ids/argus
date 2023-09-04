@@ -1,7 +1,7 @@
 package io.ids.argus.center.startup;
 
-import io.ids.argus.core.common.Namespace;
-import io.ids.argus.core.json.ArgusJson;
+import io.ids.argus.core.base.common.Namespace;
+import io.ids.argus.core.base.json.ArgusJson;
 import lombok.Data;
 
 @Data

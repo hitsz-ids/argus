@@ -1,7 +1,7 @@
 package io.ids.argus.center.startup;
 
-import io.ids.argus.core.common.Namespace;
-import io.ids.argus.core.json.ArgusJson;
+import io.ids.argus.core.base.common.Namespace;
+import io.ids.argus.core.base.json.ArgusJson;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 
@@ -24,6 +24,7 @@ public class Command {
     private final String name;
     private final String version;
     private final Namespace namespace;
+
     public Command(Protocol protocol) {
         data = InternalData.builder()
                 .customized(protocol.getCustomized())

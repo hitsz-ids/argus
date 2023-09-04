@@ -6,12 +6,10 @@ import com.google.common.cache.RemovalCause;
 import io.ids.argus.center.common.ExecuteStatus;
 import io.ids.argus.center.startup.Command;
 import io.ids.argus.center.exception.ArgusExecuteException;
-import io.ids.argus.core.conf.ArgusLogger;
-import io.ids.argus.core.json.ArgusJson;
-import io.ids.argus.core.json.Transformer;
+import io.ids.argus.core.base.conf.ArgusLogger;
+import io.ids.argus.core.base.json.ArgusJson;
+import io.ids.argus.core.base.json.Transformer;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -19,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class RequestManager {
     private final static RequestManager instance = new RequestManager();
     private final ArgusLogger log = new ArgusLogger(RequestManager.class);
+
     public static class Request {
         private final StringBuffer response = new StringBuffer();
         private final Command command;
@@ -72,11 +71,11 @@ public class RequestManager {
         return instance;
     }
 
-    public ArgusJson execute(Connection connection, Command command) {
+    public ArgusJson execute(Connector connector, Command command) {
         try {
             var request = new Request(command);
             pool.put(command.getUuid(), request);
-            var pass = connection.produce(command);
+            var pass = connector.produce(command);
             if (!pass) {
                 throw new ArgusExecuteException(ExecuteStatus.EXECUTE_COMMAND_TIME_OUT);
             }

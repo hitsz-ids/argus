@@ -2,7 +2,7 @@ package io.ids.argus.entry.controller;
 
 import io.ids.argus.center.startup.Argus;
 import io.ids.argus.center.startup.RequestData;
-import io.ids.argus.core.json.Transformer;
+import io.ids.argus.core.base.json.Transformer;
 import io.ids.argus.entry.pojo.condition.RequestCondition;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

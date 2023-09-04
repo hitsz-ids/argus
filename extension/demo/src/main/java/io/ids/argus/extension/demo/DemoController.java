@@ -10,8 +10,8 @@ import io.ids.argus.core.module.annotation.ArgusController;
 public class DemoController implements IArgusController {
 
     @API(url = "test")
-    public EmptyOutput test(EmptyArgs params) {
-        return new EmptyOutput();
+    public void test() {
+        System.out.println("test");
     }
 
     @API(url = "test/returns")

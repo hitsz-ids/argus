@@ -1,11 +1,14 @@
 package io.ids.argus.center.conf;
 
-import io.ids.argus.core.conf.ArgusProperties;
+import io.ids.argus.core.base.conf.ArgusProperties;
 
 public class CenterProperties extends ArgusProperties {
     private static final String PROPERTIES_PATH = "argus-center.properties";
 
     private static final CenterProperties instance = new CenterProperties();
+
+    private CenterProperties() {
+    }
 
     public static CenterProperties get() {
         return instance;
@@ -19,6 +22,7 @@ public class CenterProperties extends ArgusProperties {
     public int getPort() {
         return getInt("server.port");
     }
+
     public String getPublicPath() {
         return getString("server.public");
     }

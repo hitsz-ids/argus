@@ -1,6 +1,6 @@
 package io.ids.argus.center.common;
 
-import io.ids.argus.core.common.IStatus;
+import io.ids.argus.core.base.common.IStatus;
 
 public enum ExecuteStatus implements IStatus {
     EXECUTE_COMMAND_TIME_OUT(10000, "命令发送超时"),

@@ -2,17 +2,14 @@ package io.ids.argus.center.interceptor;
 
 import io.grpc.*;
 import io.ids.argus.center.common.NetworkStatus;
-import io.ids.argus.center.context.GrpcContext;
+import io.ids.argus.center.common.GrpcContext;
 import io.ids.argus.center.exception.ArgusInterceptException;
 import io.ids.argus.center.module.ModuleManager;
 import io.ids.argus.center.module.LockPool;
-import io.ids.argus.core.common.GrpcCommon;
-import io.ids.argus.core.conf.ArgusLogger;
-import io.ids.argus.core.grpc.ArgusModule;
+import io.ids.argus.core.base.conf.ArgusLogger;
+import io.ids.argus.core.base.utils.Constant;
+import io.ids.argus.core.transport.grpc.ArgusModule;
 import org.apache.commons.lang3.StringUtils;
-import org.checkerframework.checker.units.qual.A;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.Objects;
 
@@ -21,11 +18,11 @@ public class ServiceInterceptor extends Interceptor {
 
     @Override
     protected Context intercept(Metadata metadata) throws ArgusInterceptException {
-        String secret = getHeader(GrpcCommon.HEADER_MODULE_NAME, metadata);
+        String secret = getHeader(Constant.HEADER_MODULE_NAME, metadata);
         if (StringUtils.isEmpty(secret)) {
             throw new ArgusInterceptException(NetworkStatus.UNAUTHENTICATED);
         }
-        String version = getHeader(GrpcCommon.HEADER_MODULE_VERSION, metadata);
+        String version = getHeader(Constant.HEADER_MODULE_VERSION, metadata);
         if (StringUtils.isEmpty(version)) {
             throw new ArgusInterceptException(NetworkStatus.UNAUTHENTICATED);
         }

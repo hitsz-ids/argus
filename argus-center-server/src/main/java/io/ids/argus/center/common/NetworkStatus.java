@@ -1,6 +1,6 @@
 package io.ids.argus.center.common;
 
-import io.ids.argus.core.common.IStatus;
+import io.ids.argus.core.base.common.IStatus;
 
 public enum NetworkStatus implements IStatus {
     UNAUTHENTICATED(11000, "模块未授权"),
