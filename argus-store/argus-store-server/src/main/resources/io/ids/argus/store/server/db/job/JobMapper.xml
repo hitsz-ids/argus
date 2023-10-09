@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.ids.argus.store.server.db.job.JobMapper">
+
+    <!-- 根据seqId查询 -->
+    <update id="updateStatus">
+        UPDATE `argus_job` SET `status` = #{status}
+        <if test="startTime != null">
+            ,`start_time`=#{startTime}
+        </if>
+        <if test="endTime != null">
+            ,`end_time`=#{endTime}
+        </if>
+        WHERE `seq` = #{seq}
+    </update>
+    <select id="listJob" resultType="io.ids.argus.store.server.db.job.result.ListJobResult$JobData">
+        SELECT `seq`, `job`, `params` FROM `argus_job` WHERE `status` = #{status} AND
+        `module`= #{module} AND `module_version` = #{version}
+    </select>
+    <select id="selectStatusBySeq" resultType="java.lang.Integer">
+        SELECT `status` FROM `argus_job` WHERE `seq` = #{seq}
+    </select>
+
+</mapper>

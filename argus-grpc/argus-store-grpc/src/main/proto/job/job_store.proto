@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.ids.argus.store.grpc.job";
+option objc_class_prefix = "ArgusStoreJob";
+import "google/protobuf/empty.proto";
+service JobStoreService {
+  rpc create(CreateRequest) returns (CreateResponse);
+  rpc updateStatus(UpdateStatusRequest) returns (UpdateStatusResponse);
+  rpc readStatus(ReadStateRequest) returns (ReadStateResponse);
+  rpc listJob(ListJobRequest) returns(ListJobResponse);
+}
+
+enum JobStoreStatusEnum {
+  UNKNOWN = 0;
+  WAITING = 1;
+  EXECUTING = 2;
+  STOPPING = 3;
+  STOPPED = 4;
+  FAILING = 5;
+  FAILED = 7;
+  COMPLETED = 9;
+  COMPLETING = 8;
+}
+message CreateRequest {
+  string module = 1;
+  string module_version = 2;
+  string params = 3;
+  string job = 4;
+  string name = 5;
+}
+message CreateResponse {
+  int64 id = 1;
+  string seq = 2;
+}
+
+message ReadStateRequest {
+  string seq = 1;
+}
+message ReadStateResponse {
+  JobStoreStatusEnum status = 1;
+}
+
+message UpdateStatusRequest {
+  string seq = 1;
+  JobStoreStatusEnum status = 2;
+}
+
+message UpdateStatusResponse {
+}
+
+message ListJobRequest {
+  int32 status = 1;
+  string module = 2;
+  string version = 3;
+}
+
+message JobStoreData {
+  string seq = 1;
+  string job = 2;
+  string params = 3;
+}
+
+message ListJobResponse {
+  repeated JobStoreData jobList = 1;
+}

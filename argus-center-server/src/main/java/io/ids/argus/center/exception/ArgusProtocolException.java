@@ -1,10 +1,10 @@
 package io.ids.argus.center.exception;
 
-import io.ids.argus.center.common.ParserStatus;
-import io.ids.argus.core.base.exception.ArgusException;
+import io.ids.argus.center.exception.error.ProtocolError;
+import io.ids.argus.core.conf.exception.ArgusException;
 
 public class ArgusProtocolException extends ArgusException {
-    public ArgusProtocolException(ParserStatus status) {
+    public ArgusProtocolException(ProtocolError status) {
         super(status);
     }
 }

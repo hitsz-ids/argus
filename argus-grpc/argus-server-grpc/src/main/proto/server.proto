@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.ids.argus.core.grpc";
+option java_outer_classname = "ArgusGrpcServerProto";
+option objc_class_prefix = "Argus";
+import "google/protobuf/any.proto";
+service ArgusService {
+  rpc open (stream OpenRequest) returns (stream OpenResponse) {}
+}
+
+message ArgusModuleData {
+  string name = 1;
+  string version = 2;
+}
+
+message OpenRequest {
+  ArgusModuleData module = 1;
+}
+
+message RequestData {
+  string requestId = 5;
+}
+
+message LoginData {}
+
+message OpenResponse {
+  google.protobuf.Any data = 1;
+}
+
+service FetchService {
+  rpc fetch (stream FetchRequest) returns (stream FetchResponse) {}
+}
+
+message FetchRequest {
+  bytes data = 1;
+}
+
+message FetchResponse {
+  bytes bytes = 1;
+  bool eof = 3;
+}
+
+message FetchData {
+  string url = 1;
+  string params = 2;
+  string customized = 3;
+}

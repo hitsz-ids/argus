@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.ids.argus.store.grpc";
+option java_outer_classname = "ArgusStoreServiceProto";
+option objc_class_prefix = "ArgusStore";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+enum SessionType {
+  JOB = 0;
+}
+
+service SessionService {
+  rpc open(stream OpenRequest) returns (stream OpenResponse);
+}
+
+message OpenRequest {
+  string requestId = 1;
+  google.protobuf.Any data = 2;
+}
+
+message OpenResponse {
+  string requestId = 1;
+  google.protobuf.Any data = 2;
+}
+
+message RequestSessionMsg {}
+
+message ResponseSessionMsg {
+  string sessionId = 1;
+}
+
+message Commit {}
+
+message Rollback {}

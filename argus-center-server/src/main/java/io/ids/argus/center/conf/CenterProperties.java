@@ -1,6 +1,7 @@
 package io.ids.argus.center.conf;
 
-import io.ids.argus.core.base.conf.ArgusProperties;
+
+import io.ids.argus.core.conf.propertie.ArgusProperties;
 
 public class CenterProperties extends ArgusProperties {
     private static final String PROPERTIES_PATH = "argus-center.properties";

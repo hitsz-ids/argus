@@ -1,18 +1,17 @@
 package io.ids.argus.center.startup;
 
-import io.ids.argus.core.base.json.ArgusJson;
-import io.ids.argus.store.client.Store;
-import io.ids.argus.store.client.session.JobSession;
-
-import java.net.URISyntaxException;
+import io.ids.argus.center.exception.ArgusProtocolException;
+import io.ids.argus.center.protocol.Dispatcher;
+import io.ids.argus.center.protocol.Parser;
+import io.ids.argus.center.protocol.ProtocolData;
+import io.ids.argus.server.base.module.entity.Request;
 
 public class Argus {
     private static final Argus instance = new Argus();
-    private final Bootstrap server;
+    private final ArgusCenterServer server;
     private final Dispatcher dispatcher;
-
     private Argus() {
-        server = new Bootstrap();
+        server = new ArgusCenterServer();
         dispatcher = new Dispatcher();
     }
 
@@ -30,7 +29,8 @@ public class Argus {
         }
     }
 
-    public ArgusJson send(RequestData requestData) throws URISyntaxException {
-        return dispatcher.dispatch(Parser.parse(requestData));
+    public Request send(ProtocolData requestData) throws ArgusProtocolException {
+        return dispatcher.dispatch(requestData);
     }
+
 }

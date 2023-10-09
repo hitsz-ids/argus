@@ -12,12 +12,6 @@
     <groupId>io.ids.argus.module</groupId>
     <artifactId>argus-module</artifactId>
 
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>io.ids.argus.core.base</groupId>
@@ -25,13 +19,13 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.ids.argus.core.transport</groupId>
-            <artifactId>argus-core-transport</artifactId>
+            <groupId>io.ids.argus.server.grpc</groupId>
+            <artifactId>argus-server-grpc</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.ids.argus.job</groupId>
-            <artifactId>argus-job</artifactId>
+            <groupId>io.ids.argus.job.client</groupId>
+            <artifactId>argus-job-client</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

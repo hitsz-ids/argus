@@ -1,7 +1,7 @@
 package io.ids.argus.module.conf;
 
 
-import io.ids.argus.core.base.conf.ArgusProperties;
+import io.ids.argus.core.conf.propertie.ArgusProperties;
 
 public class ModuleProperties extends ArgusProperties {
 

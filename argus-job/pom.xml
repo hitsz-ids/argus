@@ -9,13 +9,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.ids.argus.job</groupId>
     <artifactId>argus-job</artifactId>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <packaging>pom</packaging>
+    <modules>
+        <module>argus-job-client</module>
+        <module>argus-job-server</module>
+        <module>argus-job-base</module>
+    </modules>
 
 </project>

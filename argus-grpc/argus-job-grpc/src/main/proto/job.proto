@@ -1,0 +1,120 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.ids.argus.job.grpc";
+option java_outer_classname = "ArgusGrpcJobServerProto";
+option objc_class_prefix = "Argus";
+import "google/protobuf/any.proto";
+service JobService {
+  rpc open(stream JobOpenRequest) returns (stream JobOpenResponse) {}
+  rpc commit(JobCommitRequest) returns (JobCommitResponse) {}
+  rpc stop(JobStopRequest) returns (JobStopResponse) {}
+  rpc complete(JobCompleteRequest) returns (JobCompleteResponse) {}
+  rpc fail(JobFailRequest) returns (JobFailResponse) {}
+  rpc listRecovery(ListRecoveryRequest) returns (ListRecoveryResponse);
+}
+
+message JobOpenRequest {
+  google.protobuf.Any data = 1;
+//  string seq = 1;
+//  string operation = 2;
+}
+
+message JobOpenResponse {
+//  bytes message = 1;
+  google.protobuf.Any data = 2;
+}
+
+message ConnectData {
+}
+
+
+message AckData {
+  string requestId = 1;
+  bool confirm = 2;
+}
+
+enum Operation {
+  ACK = 0;
+  EXECUTE = 1;
+  STOP = 2;
+  FAILED = 3;
+  COMPLETED = 4;
+}
+
+message State {
+  string requestId = 1;
+  string seq = 4;
+  google.protobuf.Any data = 5;
+}
+
+message ExecuteState {
+  string job = 1;
+  string params = 2;
+}
+
+message StopState {
+}
+
+message FailedState {
+}
+
+message CompleteState {}
+
+message JobCommitRequest {
+  string params = 3;
+  string name = 4;
+  string job = 5;
+}
+
+enum Code {
+  SUCCESS = 0;
+  NOT_FOUND = 1;
+  ERROR = 2;
+}
+
+message JobCommitResponse {
+  string seq = 1;
+  Code code = 2;
+}
+
+message JobStopRequest {
+  string seq = 1;
+}
+
+message JobStopResponse {
+  Code code = 1;
+}
+
+message JobCompleteRequest {
+  string seq = 1;
+}
+
+message JobCompleteResponse {
+  Code code = 1;
+}
+
+message JobFailRequest {
+  string seq = 1;
+  bool recovery = 2;
+}
+
+message JobFailResponse {
+  bool isDone = 1;
+  Code code = 2;
+}
+
+message JobData {
+  string seq = 1;
+  string job = 2;
+  string params = 3;
+}
+
+message ListRecoveryRequest {
+}
+
+message ListRecoveryResponse {
+  repeated JobData jobList = 1;
+}
+
+
