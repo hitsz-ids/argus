@@ -3,7 +3,7 @@ package io.ids.argus.store.server.service;
 import com.google.protobuf.Any;
 import io.grpc.stub.StreamObserver;
 import io.ids.argus.store.grpc.*;
-import io.ids.argus.store.server.session.ArgusSqlSession;
+import io.ids.argus.store.server.session.ArgusStoreSession;
 import io.ids.argus.store.server.session.SessionFactory;
 import io.ids.argus.store.server.session.SessionManager;
 
@@ -12,7 +12,7 @@ import java.util.Objects;
 public class SessionObserver implements StreamObserver<OpenRequest> {
     private final StreamObserver<OpenResponse> sender;
     private final String id;
-    private final ArgusSqlSession<?> session;
+    private final ArgusStoreSession session;
     private final Object closedLock = new Object();
     private boolean closed = false;
 

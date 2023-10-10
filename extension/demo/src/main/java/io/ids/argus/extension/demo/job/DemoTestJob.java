@@ -31,7 +31,7 @@ public class DemoTestJob extends AArgusJob<DemoTestJobParams, DemoTestJobResult>
     @Override
     public DemoTestJobResult onRun() {
         var i = 0;
-        while (running()) {
+        while (running() && i < 5) {
             log.debug("demo任务启动 :" + i++);
             try {
                 TimeUnit.SECONDS.sleep(3);

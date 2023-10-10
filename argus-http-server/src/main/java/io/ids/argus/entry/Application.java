@@ -7,16 +7,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;
 import org.springframework.context.annotation.Bean;
-
-import java.util.concurrent.CompletableFuture;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @SpringBootApplication
 @ArgusApplication(pkg = "io.ids.argus.entry")
 public class Application {
-    @Bean
-    public HttpMessageConverters fastJsonHttpMessageConverters() {
-        return new HttpMessageConverters(new JsonMessageConverter());
-    }
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

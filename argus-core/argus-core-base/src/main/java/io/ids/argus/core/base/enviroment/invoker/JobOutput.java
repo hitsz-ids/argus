@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @NoArgsConstructor
-public class JobOutput implements InvokeOutput {
+public class JobOutput implements IInvokeOutput {
     private String params;
     private String job;
     private String name;

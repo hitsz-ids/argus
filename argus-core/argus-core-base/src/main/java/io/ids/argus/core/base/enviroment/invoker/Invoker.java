@@ -35,7 +35,7 @@ public abstract class Invoker {
         var parameters = method.getParameters();
         var parameter = parameters[0];
         Object params = Transformer.fromJson(data.params(), parameter.getParameterizedType());
-        if (!(params instanceof InvokeArgs)) {
+        if (!(params instanceof IInvokeArgs)) {
             throw new ArgusInvokerException(InvokerError.ERROR_INVOKER_PARAMS);
         }
         return params;

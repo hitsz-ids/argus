@@ -54,7 +54,6 @@ public class FetchServiceObserver extends BaseObserver {
         log.error(throwable.getMessage(), throwable);
         mRequest.exception(throwable);
         mRequest.countDown();
-        observer.onCompleted();
     }
 
     @Override

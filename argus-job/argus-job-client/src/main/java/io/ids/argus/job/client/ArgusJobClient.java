@@ -70,8 +70,8 @@ class ArgusJobClient extends ArgusGrpcClient implements ConnectorListener {
         return executor.commit(request);
     }
 
-    public void stop(String seq) {
-        executor.stop(seq);
+    public JobStopResponse stop(String seq) {
+        return executor.stop(seq);
     }
 
     @Override

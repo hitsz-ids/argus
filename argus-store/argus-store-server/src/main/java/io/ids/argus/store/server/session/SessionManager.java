@@ -14,13 +14,13 @@ public class SessionManager {
         return instance;
     }
 
-    private final static Map<String, ArgusSqlSession<?>> sessions = new ConcurrentHashMap<>();
+    private final static Map<String, ArgusStoreSession> sessions = new ConcurrentHashMap<>();
 
-    public void add(String requestId, ArgusSqlSession<?> session) {
+    public void add(String requestId, ArgusStoreSession session) {
         sessions.put(requestId, session);
     }
 
-    public ArgusSqlSession<?> get(String uuid) {
+    public ArgusStoreSession get(String uuid) {
         return sessions.get(uuid);
     }
 
@@ -28,7 +28,7 @@ public class SessionManager {
         return UUID.randomUUID().toString();
     }
 
-    public ArgusSqlSession<?> remove(String requestId) {
+    public ArgusStoreSession remove(String requestId) {
         return sessions.remove(requestId);
     }
 }

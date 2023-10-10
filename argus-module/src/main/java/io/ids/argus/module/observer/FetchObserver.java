@@ -10,10 +10,7 @@ import io.ids.argus.core.base.json.Transformer;
 import io.ids.argus.core.base.utils.Utils;
 import io.ids.argus.core.conf.log.ArgusLogger;
 import io.ids.argus.core.grpc.*;
-import io.ids.argus.job.client.ArgusJob;
 import io.ids.argus.module.context.ModuleContext;
-import io.ids.argus.module.entity.StopJobRequest;
-import io.ids.argus.module.entity.StopJobResponse;
 import io.ids.argus.server.grpc.GrpcConstants;
 
 import java.nio.charset.StandardCharsets;
@@ -32,18 +29,24 @@ public class FetchObserver implements StreamObserver<FetchResponse> {
         this.server = server;
     }
 
+//    private boolean isInternal(String url) {
+//        if (context.special(url))
+//        var request = Transformer.parseObject(fetchData.getParams(), StopJobRequest.class);
+//        var res = ArgusJob.get().stop(request.getSeq());
+//        callback(StopJobResponse.transmission(res.getCode().getNumber(), res.getMsg()));
+//    }
     @Override
     public void onNext(FetchResponse fetchResponse) {
         try {
             if (fetchResponse.getEof()) {
                 var fetchData = FetchData.parseFrom(stream.toByteArray());
                 var url = Utils.pack(fetchData.getUrl());
-                if (context.special(url)) {
-                    var request = Transformer.parseObject(fetchData.getParams(), StopJobRequest.class);
-                    ArgusJob.get().stop(request.getSeq());
-                    callback(StopJobResponse.transmission());
-                    return;
-                }
+//                if (context.special(url)) {
+//                    var request = Transformer.parseObject(fetchData.getParams(), StopJobRequest.class);
+//                    var res = ArgusJob.get().stop(request.getSeq());
+//                    callback(StopJobResponse.transmission(res.getCode().getNumber(), res.getMsg()));
+//                    return;
+//                }
                 if (!context.contains(url)) {
                     throw new ArgusInvokerException(InvokerError.NOT_FOUND_URL);
                 }
@@ -57,6 +60,7 @@ public class FetchObserver implements StreamObserver<FetchResponse> {
                 stream = stream.concat(fetchResponse.getBytes());
             }
         } catch (Exception e) {
+            log.error(e.getMessage(), e);
             server.onError(Status.INTERNAL.withDescription(e.getMessage()).asException());
         }
     }

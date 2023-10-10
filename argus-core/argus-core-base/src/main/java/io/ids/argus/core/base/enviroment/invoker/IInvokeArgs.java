@@ -1,5 +1,5 @@
 package io.ids.argus.core.base.enviroment.invoker;
 
-public interface InvokeArgs {
+public interface IInvokeArgs {
     default void validate() {}
 }

@@ -2,7 +2,7 @@ package io.ids.argus.module.context;
 
 
 import io.ids.argus.core.base.exception.error.InvokerError;
-import io.ids.argus.core.base.enviroment.invoker.InvokeOutput;
+import io.ids.argus.core.base.enviroment.invoker.IInvokeOutput;
 import io.ids.argus.core.base.enviroment.invoker.Invoker;
 import io.ids.argus.core.base.exception.ArgusInvokerException;
 import io.ids.argus.core.base.json.ArgusJson;
@@ -39,7 +39,7 @@ public class ModuleApiInvoker extends Invoker {
             json.add("seq", seq);
             return json.toJsonString();
         }
-        if (!(result instanceof InvokeOutput)) {
+        if (!(result instanceof IInvokeOutput)) {
             throw new ArgusInvokerException(InvokerError.ERROR_INVOKE_RETURN);
         }
         return Transformer.toJsonString(result);

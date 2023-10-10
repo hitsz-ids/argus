@@ -9,13 +9,15 @@ import io.ids.argus.store.server.db.job.params.ListJobParams;
 import io.ids.argus.store.server.db.job.params.UpdateStatusParams;
 import io.ids.argus.store.server.db.job.result.CreateResult;
 import io.ids.argus.store.server.db.job.result.ListJobResult;
-import io.ids.argus.store.server.session.ArgusSqlSession;
+import io.ids.argus.store.server.session.ArgusSqlStoreSession;
 
 import java.util.*;
 
-public class JobSqlSession extends ArgusSqlSession<JobMapper> {
-    public JobSqlSession() {
-        super(JobMapper.class);
+public class JobSqlStoreSession extends ArgusSqlStoreSession<JobMapper> {
+
+    @Override
+    public Class<JobMapper> getMapper() {
+        return JobMapper.class;
     }
 
     public CreateResult create(CreateParams params) {

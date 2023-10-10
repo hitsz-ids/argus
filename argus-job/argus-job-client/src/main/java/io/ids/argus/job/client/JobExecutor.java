@@ -41,13 +41,13 @@ public class JobExecutor extends Thread {
         future.thenAcceptAsync((r) -> {
             try {
                 job.setResult(r);
-                complete(job.getSeq());
+                internalComplete(job.getSeq());
             } catch (Exception e) {
-                fail(job.getSeq());
+                internalFail(job.getSeq());
             }
         });
         future.exceptionallyAsync(throwable -> {
-            fail(job.getSeq());
+            internalFail(job.getSeq());
             return null;
         });
     }
@@ -59,11 +59,11 @@ public class JobExecutor extends Thread {
                 var retry = retryQueue.take();
                 TimeUnit.SECONDS.sleep(5);
                 if (retry.retryEnum == RetryEnum.STOP) {
-                    stop(retry.seq);
+                    internalStop(retry.seq);
                 } else if (retry.retryEnum == RetryEnum.FAIL) {
-                    fail(retry.seq);
+                    internalFail(retry.seq);
                 } else if (retry.retryEnum == RetryEnum.COMPLETE) {
-                    complete(retry.seq);
+                    internalComplete(retry.seq);
                 }
             } catch (InterruptedException e) {
                 return;
@@ -97,15 +97,13 @@ public class JobExecutor extends Thread {
         return getStub().commit(request);
     }
 
-    public void complete(String seq) {
+    public void internalComplete(String seq) {
         var res = getStub().complete(JobCompleteRequest.newBuilder()
                 .setSeq(seq)
                 .build());
         if (Objects.equals(res.getCode(), Code.ERROR)) {
             retryQueue.add(new Retry(seq, RetryEnum.COMPLETE));
-            return;
-        }
-        if (Objects.equals(res.getCode(), Code.NOT_FOUND)) {
+        } else if (Objects.equals(res.getCode(), Code.NOT_FOUND)) {
             var job = jobs.remove(seq);
             if (!Objects.isNull(job)) {
                 job.stashState(JobState.COMPLETED);
@@ -113,12 +111,12 @@ public class JobExecutor extends Thread {
         }
     }
 
-    public void fail(String seq) {
-        var res = getStub().fail(JobFailRequest.newBuilder()
-                .setSeq(seq).build());
-        if (Objects.equals(res.getCode(), Code.ERROR)) {
+    private void internalFail(String seq) {
+        var code = getStub().fail(JobFailRequest.newBuilder()
+                .setSeq(seq).build()).getCode();
+        if (Objects.equals(code, Code.ERROR)) {
             retryQueue.add(new Retry(seq, RetryEnum.FAIL));
-        } else if (Objects.equals(res.getCode(), Code.NOT_FOUND)) {
+        } else {
             var job = jobs.remove(seq);
             if (!Objects.isNull(job)) {
                 job.stashState(JobState.FAILED);
@@ -126,9 +124,9 @@ public class JobExecutor extends Thread {
         }
     }
 
-    public void stop(String seq) {
-        var res = getStub().stop(JobStopRequest.newBuilder().setSeq(seq).build());
-        if (Objects.equals(res.getCode(), Code.ERROR)) {
+    private void internalStop(String seq) {
+        var code = getStub().stop(JobStopRequest.newBuilder().setSeq(seq).build()).getCode();
+        if (Objects.equals(code, Code.ERROR)) {
             retryQueue.add(new Retry(seq, RetryEnum.STOP));
         } else {
             var job = jobs.remove(seq);
@@ -137,7 +135,20 @@ public class JobExecutor extends Thread {
                 job.cancel();
             }
         }
+    }
 
+    public JobStopResponse stop(String seq) {
+        var res = getStub().stop(JobStopRequest.newBuilder().setSeq(seq).build());
+        var code = res.getCode();
+        if (Objects.equals(code, Code.SUCCESS) ||
+                Objects.equals(code, Code.OPERATING)) {
+            var job = jobs.remove(seq);
+            if (!Objects.isNull(job)) {
+                job.stashState(JobState.STOPPED);
+                job.cancel();
+            }
+        }
+        return res;
     }
 
     public void recovery() {

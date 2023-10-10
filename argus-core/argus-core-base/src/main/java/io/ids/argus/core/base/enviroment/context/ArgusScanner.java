@@ -83,6 +83,7 @@ public class ArgusScanner {
             log.error(e.getMessage(), e);
             throw new ArgusScannerException(ScanError.SCAN_JAR_ERROR);
         }
+
     }
 
     private void innerScan(URL url, String pkg) throws ArgusScannerException {
@@ -135,7 +136,7 @@ public class ArgusScanner {
         }
     }
 
-    private void addContext(Class<?> clazz) {
+    protected void addContext(Class<?> clazz) {
         Method[] declaredMethods = clazz.getDeclaredMethods();
         var cClass = new ArgusControllerClass(clazz.getName());
         API api;

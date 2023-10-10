@@ -8,7 +8,7 @@ import io.ids.argus.store.server.db.job.params.UpdateStatusParams;
 import io.ids.argus.store.server.service.IService;
 
 public class JobStoreService extends JobStoreServiceGrpc.JobStoreServiceImplBase
-        implements IService<JobSqlSession> {
+        implements IService<JobSqlStoreSession> {
     @Override
     public void create(CreateRequest request, StreamObserver<CreateResponse> responseObserver) {
         var session = getSqlSession();

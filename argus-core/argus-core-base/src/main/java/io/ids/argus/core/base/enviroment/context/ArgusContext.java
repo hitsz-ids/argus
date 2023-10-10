@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public abstract class ArgusContext extends ArgusScanner {
 
-    private static final String STOP_JOB_URL = "/'stop-job'/";
+
     private final ArgusLogger log = new ArgusLogger(ArgusContext.class);
 
     public boolean contains(String url) {
@@ -21,12 +21,12 @@ public abstract class ArgusContext extends ArgusScanner {
         return Objects.nonNull(cc) && Objects.nonNull(cm);
     }
 
-    public boolean special(String url) {
-        if (STOP_JOB_URL.equals(url)) {
-            return true;
-        }
-        return false;
-    }
+//    public boolean special(String url) {
+//        if (STOP_JOB_URL.equals(url)) {
+//            return true;
+//        }
+//        return false;
+//    }
 
     public final String invoke(Invoker.Data data) {
         return innerInvoke(data);
@@ -53,8 +53,9 @@ public abstract class ArgusContext extends ArgusScanner {
                 throw new ArgusInvokerException(InvokerError.NOT_FOUND_INVOKER);
             }
             return invoker.invoke();
+        } catch (ArgusInvokerException e) {
+            throw e;
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
             throw new ArgusInvokerException(InvokerError.ERROR_INVOKE);
         }
     }

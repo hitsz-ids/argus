@@ -72,24 +72,27 @@ public class JobService extends JobServiceGrpc.JobServiceImplBase {
             if (success) {
                 responseObserver.onNext(JobStopResponse.newBuilder()
                         .setCode(Code.SUCCESS)
+                        .setMsg("任务已停止")
                         .build());
             } else {
                 success = JobManager.get().publishCommand(request.getSeq(),
                         Command.builder().operation(Operation.STOP).build());
                 if (!success) {
-
                     responseObserver.onNext(JobStopResponse.newBuilder()
                             .setCode(Code.ERROR)
+                            .setMsg("任务执行停止失败")
                             .build());
                 } else {
                     responseObserver.onNext(JobStopResponse.newBuilder()
-                            .setCode(Code.SUCCESS)
+                            .setCode(Code.OPERATING)
+                            .setMsg("任务正在执行停止操作")
                             .build());
                 }
             }
         } catch (ArgusJobServerCallbackException e) {
             responseObserver.onNext(JobStopResponse.newBuilder()
                     .setCode(Code.NOT_FOUND)
+                    .setMsg(e.getMsg())
                     .build());
         } finally {
             responseObserver.onCompleted();
@@ -107,7 +110,7 @@ public class JobService extends JobServiceGrpc.JobServiceImplBase {
                         .build());
             } else {
                 responseObserver.onNext(JobCompleteResponse.newBuilder()
-                        .setCode(Code.SUCCESS)
+                        .setCode(Code.OPERATING)
                         .build());
             }
         } catch (ArgusJobServerCallbackException e) {
@@ -140,10 +143,12 @@ public class JobService extends JobServiceGrpc.JobServiceImplBase {
                 success = JobManager.get().publishCommand(request.getSeq(),
                         Command.builder().operation(Operation.FAILED).build());
                 if (!success) {
-
+                    responseObserver.onNext(JobFailResponse.newBuilder()
+                            .setCode(Code.ERROR)
+                            .build());
                 } else {
                     responseObserver.onNext(JobFailResponse.newBuilder()
-                            .setIsDone(false)
+                            .setCode(Code.OPERATING)
                             .build());
                     responseObserver.onCompleted();
                 }

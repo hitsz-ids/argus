@@ -27,16 +27,25 @@ public abstract class AArgusJob<P extends IJobParams, R extends IJobResult> {
     }
 
     void stop() {
+        if (!Objects.equals(mState, JobState.EXECUTE)) {
+            return;
+        }
         mState = JobState.STOPPED;
         onStop();
     }
 
     void complete() {
+        if (!Objects.equals(mState, JobState.EXECUTE)) {
+            return;
+        }
         mState = JobState.COMPLETED;
         onComplete();
     }
 
     void failed() {
+        if (!Objects.equals(mState, JobState.FAILED)) {
+            return;
+        }
         mState = JobState.FAILED;
         onFailed();
     }

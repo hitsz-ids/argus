@@ -51,6 +51,7 @@ public class ArgusModule implements ObserverListener {
 
     public static void start(Class<?> primarySource) throws ArgusScannerException {
         instance.context.scan(primarySource);
+        instance.context.addInternalContext();
         instance.connect();
     }
 

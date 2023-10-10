@@ -4,6 +4,7 @@ import io.ids.argus.job.base.ConnectorId;
 import io.ids.argus.job.base.JobAddress;
 import io.ids.argus.job.client.error.JobError;
 import io.ids.argus.job.client.exception.ArgusJobException;
+import io.ids.argus.job.grpc.Code;
 import io.ids.argus.job.grpc.JobCommitRequest;
 import io.ids.argus.job.grpc.JobCommitResponse;
 import io.ids.argus.job.grpc.JobStopResponse;
@@ -37,8 +38,8 @@ public final class ArgusJob {
         return client.commit(data);
     }
 
-    public void stop(String seq) {
-        client.stop(seq);
+    public JobStopResponse stop(String seq) {
+        return client.stop(seq);
     }
 
 }
