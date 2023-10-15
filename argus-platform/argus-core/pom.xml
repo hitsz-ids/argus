@@ -11,8 +11,11 @@
 
     <artifactId>argus-core</artifactId>
     <packaging>pom</packaging>
+    <name>Argus : Core</name>
+
     <modules>
         <module>argus-core-base</module>
         <module>argus-core-conf</module>
     </modules>
+
 </project>

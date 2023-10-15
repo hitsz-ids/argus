@@ -11,4 +11,6 @@
 
     <groupId>io.ids.argus.job.grpc</groupId>
     <artifactId>argus-job-grpc</artifactId>
+    <name>Argus : Job Grpc</name>
+
 </project>

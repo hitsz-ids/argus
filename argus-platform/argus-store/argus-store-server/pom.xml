@@ -12,6 +12,8 @@
     <artifactId>argus-store-server</artifactId>
     <groupId>io.ids.argus.store.server</groupId>
     <version>1.0-SNAPSHOT</version>
+    <name>Argus : Store Server</name>
+
     <dependencies>
         <dependency>
             <groupId>io.ids.argus.store.base</groupId>
@@ -57,6 +59,7 @@
             <version>${commons-logging.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <resources>
             <resource>
@@ -70,4 +73,5 @@
             </resource>
         </resources>
     </build>
+
 </project>
