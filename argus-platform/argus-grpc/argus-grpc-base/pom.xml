@@ -11,4 +11,6 @@
 
     <groupId>io.ids.argus.grpc.base</groupId>
     <artifactId>argus-grpc-base</artifactId>
+    <name>Argus : Grpc Base</name>
+
 </project>

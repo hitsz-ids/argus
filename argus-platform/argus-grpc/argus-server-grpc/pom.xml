@@ -11,5 +11,6 @@
 
     <groupId>io.ids.argus.server.grpc</groupId>
     <artifactId>argus-server-grpc</artifactId>
+    <name>Argus : Server Grpc</name>
 
 </project>

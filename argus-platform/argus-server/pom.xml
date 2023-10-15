@@ -11,6 +11,8 @@
 
     <artifactId>argus-server</artifactId>
     <packaging>pom</packaging>
+    <name>Argus : Server</name>
+
     <modules>
         <module>argus-server-base</module>
     </modules>

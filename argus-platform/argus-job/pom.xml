@@ -11,6 +11,8 @@
 
     <artifactId>argus-job</artifactId>
     <packaging>pom</packaging>
+    <name>Argus : Job</name>
+
     <modules>
         <module>argus-job-client</module>
         <module>argus-job-server</module>

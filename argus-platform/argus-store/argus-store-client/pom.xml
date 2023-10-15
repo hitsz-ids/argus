@@ -12,6 +12,8 @@
     <artifactId>argus-store-client</artifactId>
     <groupId>io.ids.argus.store.client</groupId>
     <version>1.0-SNAPSHOT</version>
+    <name>Argus : Store Client</name>
+
     <dependencies>
         <dependency>
             <groupId>com.github.jsqlparser</groupId>
@@ -25,4 +27,5 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 </project>

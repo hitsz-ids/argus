@@ -11,9 +11,12 @@
 
     <artifactId>argus-store</artifactId>
     <packaging>pom</packaging>
+    <name>Argus : Store</name>
+
     <modules>
         <module>argus-store-base</module>
         <module>argus-store-server</module>
         <module>argus-store-client</module>
     </modules>
+
 </project>

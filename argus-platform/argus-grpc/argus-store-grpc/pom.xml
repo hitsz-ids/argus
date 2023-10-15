@@ -11,4 +11,6 @@
 
     <groupId>io.ids.argus.store.grpc</groupId>
     <artifactId>argus-store-grpc</artifactId>
+    <name>Argus : Store Grpc</name>
+
 </project>

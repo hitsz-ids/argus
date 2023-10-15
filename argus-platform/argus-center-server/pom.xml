@@ -11,6 +11,7 @@
 
     <groupId>io.ids.argus.center</groupId>
     <artifactId>argus-center-server</artifactId>
+    <name>Argus : Center Server</name>
 
     <dependencies>
         <dependency>
@@ -24,6 +25,7 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
     <build>
         <extensions>
             <extension>
@@ -65,4 +67,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

@@ -7,13 +7,14 @@
     <groupId>io.ids.argus.entry</groupId>
     <artifactId>argus-http-server</artifactId>
     <version>1.0.0</version>
+    <name>Argus : Http Server</name>
+
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <logback.version>1.3.0-alpha16</logback.version>
         <org.slf4j.version>2.0.3</org.slf4j.version>
-
         <org.spring.version>3.1.0</org.spring.version>
     </properties>
 
@@ -60,4 +61,5 @@
             <version>1.18.26</version>
         </dependency>
     </dependencies>
+
 </project>

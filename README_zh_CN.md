@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="doc/argus-logo.png" width="288" >
+  <img src="doc/argus-logo.png" width="365" >
 </div>
 
 [![License](https://img.shields.io/badge/license-Apache%202-5BB9BC.svg)](https://www.apache.org/licenses/LICENSE-2.0.html) [![EN doc](https://img.shields.io/badge/document-English-5BB9BC.svg)](README.md)
