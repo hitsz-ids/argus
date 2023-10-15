@@ -11,7 +11,7 @@
 
     <artifactId>demo</artifactId>
     <groupId>io.ids.argus.extension.demo</groupId>
-    <name>Argus Platform</name>
+    <name>Argus : Demo Extension</name>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
