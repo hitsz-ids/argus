@@ -9,13 +9,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.ids.argus.core.base</groupId>
     <artifactId>argus-core-base</artifactId>
     <name>Argus : Core Base</name>
 
     <dependencies>
         <dependency>
-            <groupId>io.ids.argus.core.conf</groupId>
+            <groupId>io.ids.argus</groupId>
             <artifactId>argus-core-conf</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

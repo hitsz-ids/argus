@@ -9,7 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.ids.argus.grpc.base</groupId>
     <artifactId>argus-grpc-base</artifactId>
     <name>Argus : Grpc Base</name>
 

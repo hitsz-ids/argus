@@ -9,18 +9,17 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.ids.argus.job.server</groupId>
     <artifactId>argus-job-server</artifactId>
     <name>Argus : Job Server</name>
 
     <dependencies>
         <dependency>
-            <groupId>io.ids.argus.job.base</groupId>
+            <groupId>io.ids.argus</groupId>
             <artifactId>argus-job-base</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>io.ids.argus.store.client</groupId>
+            <groupId>io.ids.argus</groupId>
             <artifactId>argus-store-client</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

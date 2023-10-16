@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+      <artifactId>argus-assembly</artifactId>
+      <groupId>io.ids.argus.assembly</groupId>
+      <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>argus-assembly-extension-demo</artifactId>
+    <name>Argus : Assembly Extension Demo</name>
+
+    <properties>
+      <maven.compiler.target>17</maven.compiler.target>
+      <maven.compiler.source>17</maven.compiler.source>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+      <plugins>
+        <plugin>
+          <artifactId>maven-shade-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>shade-argus-extension-demo</id>
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <configuration>
+                <finalName>${project.artifactId}-${project.version}-with-dependencies</finalName>
+                <transformers>
+                  <transformer />
+                  <transformer />
+                  <transformer>
+                    <mainClass>io.ids.argus.extension.demo.DemoApplication</mainClass>
+                  </transformer>
+                  <transformer>
+                    <resources>
+                      <resource>NOTICE.txt</resource>
+                      <resource>NOTICE</resource>
+                      <resource>LICENSE</resource>
+                      <resource>Log4j-charsets.properties</resource>
+                      <resource>Log4j-config.xsd</resource>
+                      <resource>Log4j-events.dtd</resource>
+                      <resource>Log4j-events.xsd</resource>
+                      <resource>Log4j-levels.xsd</resource>
+                      <resource>log4j2.springboot</resource>
+                      <resource>AUTHORS</resource>
+                      <resource>changelog.txt</resource>
+                      <resource>latestchanges.html</resource>
+                      <resource>README.md</resource>
+                      <resource>release-timestamp.txt</resource>
+                    </resources>
+                  </transformer>
+                  <transformer>
+                    <resource>META-INF/LICENSE</resource>
+                    <file>${basedir}/../../LICENSE</file>
+                  </transformer>
+                </transformers>
+                <filters>
+                  <filter>
+                    <artifact>*:*</artifact>
+                    <excludes>
+                      <exclude>module-info.class</exclude>
+                      <exclude>META-INF/*.MF</exclude>
+                      <exclude>META-INF/NOTICE</exclude>
+                      <exclude>META-INF/LICENSE</exclude>
+                      <exclude>META-INF/DEPENDENCIES</exclude>
+                      <exclude>**/*.template</exclude>
+                    </excludes>
+                  </filter>
+                </filters>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+
+</project>

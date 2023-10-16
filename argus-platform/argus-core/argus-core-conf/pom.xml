@@ -9,7 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.ids.argus.core.conf</groupId>
     <artifactId>argus-core-conf</artifactId>
     <name>Argus : Core Conf</name>
 

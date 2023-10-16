@@ -10,7 +10,6 @@
     </parent>
 
     <artifactId>argus-store-client</artifactId>
-    <groupId>io.ids.argus.store.client</groupId>
     <version>1.0-SNAPSHOT</version>
     <name>Argus : Store Client</name>
 
@@ -22,7 +21,7 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>io.ids.argus.store.base</groupId>
+            <groupId>io.ids.argus</groupId>
             <artifactId>argus-store-base</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>

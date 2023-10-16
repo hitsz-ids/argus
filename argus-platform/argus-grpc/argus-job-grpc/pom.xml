@@ -9,7 +9,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>io.ids.argus.job.grpc</groupId>
     <artifactId>argus-job-grpc</artifactId>
     <name>Argus : Job Grpc</name>
 
