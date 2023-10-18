@@ -1,6 +1,7 @@
 <div align="center">
 <br />
 <img src="doc/argus-logo.png" width="365" >
+<br />
 
 [![License](https://img.shields.io/badge/license-Apache%202-686FFF.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
 [![CN doc](https://img.shields.io/badge/文档-中文版-686FFF.svg)](README_zh_CN.md)
