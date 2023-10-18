@@ -1,8 +1,13 @@
 <div align="center">
-  <img src="doc/argus-logo.png" width="365" >
+<br />
+<img src="doc/argus-logo.png" width="365" >
+<br />
+
+[![License](https://img.shields.io/badge/license-Apache%202-686FFF.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)
+[![CN doc](https://img.shields.io/badge/文档-中文版-686FFF.svg)](README_zh_CN.md)
+[![Slack](https://img.shields.io/badge/slack-Join%20Argus-686FFF.svg?logo=slack)](https://join.slack.com/t/hitsz-ids/shared_invite/zt-2395mt6x2-dwf0j_423QkAgGvlNA5E1g)
 </div>
 
-[![License](https://img.shields.io/badge/license-Apache%202-5BB9BC.svg)](https://www.apache.org/licenses/LICENSE-2.0.html)  [![CN doc](https://img.shields.io/badge/文档-中文版-5BB9BC.svg)](README_zh_CN.md)
 
 ## 🚀 Introduction
 
@@ -25,4 +30,7 @@ Check out our website for detailed information: https://argus.idslab.io/
 
 ## 🤝 Join Community
 
-Join our data sandbox community to explore related technologies and grow together. We welcome organizations, teams, and individuals who share our commitment to data protection and security through open source.
+Join argus community to explore related technologies and grow together. We welcome organizations, teams, and individuals who share our commitment to data protection and security through open source.
+
+This is our QQ Group:  
+<img src="doc/argus-qq-group.jpg" width="256">
