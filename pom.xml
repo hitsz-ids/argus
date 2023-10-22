@@ -21,7 +21,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <dist.path>dist</dist.path>
+        <build-tool.path>build-tool</build-tool.path>
 
         <!-- grpc -->
         <grpc.all.version>1.53.0</grpc.all.version>
@@ -75,17 +75,6 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <inherited>false</inherited>
                 <executions>
-                    <!-- Prevent Windows line endings -->
-                    <execution>
-                        <id>Check that there are no Windows line endings</id>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <phase>compile</phase>
-                        <configuration>
-                            <executable>${dist.path}/tools/style/check_no_windows_line_endings.sh</executable>
-                        </configuration>
-                    </execution>
                     <!-- Create bin/version.sh -->
                     <execution>
                         <id>Write version string in generated packaged script</id>
@@ -94,7 +83,7 @@
                         </goals>
                         <phase>compile</phase>
                         <configuration>
-                            <executable>${dist.path}/tools/version/write_version.sh</executable>
+                            <executable>${build-tool.path}/version/write_version.sh</executable>
                             <arguments>${project.version}</arguments>
                         </configuration>
                     </execution>

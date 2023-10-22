@@ -9,7 +9,7 @@ this="${common_bin}/${script}"
 # convert relative path to absolute path
 config_bin=$(dirname "${this}")
 script=$(basename "${this}")
-config_bin=$(cd "${config_bin}"; pwd)
+config_bin=$(cd "${config_bin}" || exit; pwd)
 this="${config_bin}/${script}"
 
 # Set Argus version from generated script
@@ -17,8 +17,10 @@ this="${config_bin}/${script}"
 
 # This will set the default installation for a tarball installation while os distributors can
 # set system installation locations.
-ARGUS_HOME=$(dirname $(dirname "${this}"))
-ARGUS_ASSEMBLY_SERVER_JAR="${ARGUS_HOME}/argus-assembly/argus-assembly-http-server/target/argus-assembly-http-server-${VERSION}-with-dependencies.jar"
+ARGUS_HOME=$(dirname "$(dirname "${this}")")
+ARGUS_ASSEMBLY_STORE_SERVER_JAR="${ARGUS_HOME}/argus-assembly/argus-assembly-store-server/target/argus-assembly-store-server-${VERSION}-with-dependencies.jar"
+ARGUS_ASSEMBLY_JOB_SERVER_JAR="${ARGUS_HOME}/argus-assembly/argus-assembly-job-server/target/argus-assembly-job-server-${VERSION}-with-dependencies.jar"
+ARGUS_ASSEMBLY_HTTP_SERVER_JAR="${ARGUS_HOME}/argus-assembly/argus-assembly-http-server/target/argus-assembly-http-server-${VERSION}-with-dependencies.jar"
 ARGUS_ASSEMBLY_EXTENSION_DEMO_JAR="${ARGUS_HOME}/argus-assembly/argus-assembly-extension-demo/target/argus-assembly-extension-demo-${VERSION}-with-dependencies.jar"
 
 # Check if java is found
