@@ -14,12 +14,14 @@
     <modules>
         <module>argus-platform</module>
         <module>argus-extension</module>
+        <module>argus-assembly</module>
     </modules>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <build-tool.path>build-tool</build-tool.path>
 
         <!-- grpc -->
         <grpc.all.version>1.53.0</grpc.all.version>
@@ -50,4 +52,44 @@
         <spring-core.version>6.0.6</spring-core.version>
         <!--argus-store -->
     </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.2.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>1.4.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <inherited>false</inherited>
+                <executions>
+                    <!-- Create bin/version.sh -->
+                    <execution>
+                        <id>Write version string in generated packaged script</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <phase>compile</phase>
+                        <configuration>
+                            <executable>${build-tool.path}/version/write_version.sh</executable>
+                            <arguments>${project.version}</arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

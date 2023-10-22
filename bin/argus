@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+function printUsage {
+  echo "Usage: argus COMMAND"
+  echo "the order of the server start is: Store Server -> Job Server -> Http Server/Extension Server"
+  echo
+  echo "COMMAND is one of:"
+  echo -e "  start         \t Start the Argus Http Server"
+  echo -e "  startStore    \t Start the Argus Store Server"
+  echo -e "  startJob      \t Start the Argus Job Server"
+  echo -e "  startDemo     \t Start the Extension Demo of Argus"
+  echo
+  echo "Commands print help when invoked without parameters."
+}
+
+function runJar {
+  "${JAVA}" -jar "${JAR}"
+}
+
+function main {
+
+  BIN=$(cd "$( dirname "$( readlink "$0" || echo "$0" )" )" || exit; pwd)
+
+  if [[ $# == 0 ]]; then
+    printUsage
+    exit 1
+  fi
+
+  COMMAND=$1
+  shift
+
+  . "${BIN}"/argus-config.sh
+
+  case ${COMMAND} in
+  "start")
+    JAR=${ARGUS_ASSEMBLY_HTTP_SERVER_JAR}
+    runJar "$@"
+  ;;
+  "startStore")
+    JAR=${ARGUS_ASSEMBLY_STORE_SERVER_JAR}
+    runJar "$@"
+  ;;
+  "startJob")
+    JAR=${ARGUS_ASSEMBLY_JOB_SERVER_JAR}
+    runJar "$@"
+  ;;
+  "startDemo")
+    JAR=${ARGUS_ASSEMBLY_EXTENSION_DEMO_JAR}
+    runJar "$@"
+  ;;
+  *)
+    echo "Unsupported command ${COMMAND}" >&2
+    printUsage
+    exit 1
+  ;;
+  esac
+}
+
+main "$@"

@@ -1,4 +1,7 @@
+#!/bin/bash
+
 output=output
+
 rm -rf "$output"
 mkdir "$output"
 mkdir "$output"/ca
