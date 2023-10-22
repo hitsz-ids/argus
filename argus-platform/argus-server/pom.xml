@@ -9,7 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <groupId>io.ids.argus.server</groupId>
     <artifactId>argus-server</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Argus : Server</name>
 
