@@ -54,7 +54,7 @@
         <!--argus-store -->
 
         <!--   Spring  Web   -->
-        <spring-boot.version>3.1.0</spring-boot.version>
+        <spring-boot.version>3.1.5</spring-boot.version>
         <jarkrta.servlet.version>6.0.0</jarkrta.servlet.version>
         <!--   Spring  Web   -->
 
