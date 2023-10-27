@@ -16,12 +16,10 @@
         <dependency>
             <groupId>io.ids.argus.core</groupId>
             <artifactId>argus-core-base</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.ids.argus.server</groupId>
             <artifactId>argus-server-base</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

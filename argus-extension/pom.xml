@@ -18,12 +18,15 @@
         <module>demo</module>
     </modules>
 
+    <properties>
+        <argus-module.version>1.0-SNAPSHOT</argus-module.version>
+    </properties>
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>io.ids.argus.module</groupId>
                 <artifactId>argus-module</artifactId>
-                <version>1.0-SNAPSHOT</version>
+                <version>${argus-module.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

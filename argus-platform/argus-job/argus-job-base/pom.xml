@@ -16,17 +16,14 @@
         <dependency>
             <groupId>io.ids.argus.grpc</groupId>
             <artifactId>argus-job-grpc</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.ids.argus.grpc</groupId>
             <artifactId>argus-grpc-base</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>io.ids.argus.core</groupId>
             <artifactId>argus-core-conf</artifactId>
-            <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

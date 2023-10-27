@@ -26,39 +26,89 @@
         <module>argus-server</module>
     </modules>
 
+
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- grpc -->
-        <grpc.all.version>1.53.0</grpc.all.version>
-        <grpc.os.maven.version>1.6.2</grpc.os.maven.version>
-        <grpc.protoc.version>3.19.2</grpc.protoc.version>
-        <javax.annotation.version>1.3.2</javax.annotation.version>
-        <grpc.os.maven.version>1.6.2</grpc.os.maven.version>
-        <grpc.proto.plugin.version>0.6.1</grpc.proto.plugin.version>
-        <!-- grpc -->
-
-        <!--argus-core-->
-        <fastjson2.version>2.0.25</fastjson2.version>
-        <apache.commons.lang3.version>3.12.0</apache.commons.lang3.version>
-        <logback.version>1.4.7</logback.version>
-        <org.slf4j.version>2.0.5</org.slf4j.version>
-        <google.findbugs.version>3.0.2</google.findbugs.version>
-        <lombok.version>1.18.26</lombok.version>
-        <!--argus-core-->
-
-        <!--argus-store -->
-        <mysql-connector.version>8.0.33</mysql-connector.version>
-        <druid.version>1.2.16</druid.version>
-        <gson.version>2.8.9</gson.version>
-        <mybatis.version>3.5.7</mybatis.version>
-        <junit5.version>5.9.2</junit5.version>
-        <commons-logging.version>1.2</commons-logging.version>
-        <mybatis-plugin.version>3.5.3.1</mybatis-plugin.version>
-        <spring-core.version>6.0.6</spring-core.version>
-        <!--argus-store -->
+        <core-base.version>1.0-SNAPSHOT</core-base.version>
+        <core-conf.version>1.0-SNAPSHOT</core-conf.version>
+        <server-base.version>1.0-SNAPSHOT</server-base.version>
+        <center-server.version>1.0-SNAPSHOT</center-server.version>
+        <job-grpc.version>1.0-SNAPSHOT</job-grpc.version>
+        <grpc-base.version>1.0-SNAPSHOT</grpc-base.version>
+        <job-client.version>1.0-SNAPSHOT</job-client.version>
+        <server-grpc.version>1.0-SNAPSHOT</server-grpc.version>
+        <store-grpc.version>1.0-SNAPSHOT</store-grpc.version>
+        <store-base.version>1.0-SNAPSHOT</store-base.version>
+        <job-base.version>1.0-SNAPSHOT</job-base.version>
+        <store-client.version>1.0-SNAPSHOT</store-client.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>io.ids.argus.core</groupId>
+                <artifactId>argus-core-base</artifactId>
+                <version>${core-base.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.ids.argus.core</groupId>
+                <artifactId>argus-core-conf</artifactId>
+                <version>${core-conf.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.ids.argus.server</groupId>
+                <artifactId>argus-server-base</artifactId>
+                <version>${server-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus</groupId>
+                <artifactId>argus-center-server</artifactId>
+                <version>${center-server.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.ids.argus.grpc</groupId>
+                <artifactId>argus-job-grpc</artifactId>
+                <version>${job-grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.grpc</groupId>
+                <artifactId>argus-grpc-base</artifactId>
+                <version>${grpc-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.job</groupId>
+                <artifactId>argus-job-client</artifactId>
+                <version>${job-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.grpc</groupId>
+                <artifactId>argus-server-grpc</artifactId>
+                <version>${server-grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.grpc</groupId>
+                <artifactId>argus-store-grpc</artifactId>
+                <version>${store-grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.store</groupId>
+                <artifactId>argus-store-base</artifactId>
+                <version>${store-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.job</groupId>
+                <artifactId>argus-job-base</artifactId>
+                <version>${job-base.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.ids.argus.store</groupId>
+                <artifactId>argus-store-client</artifactId>
+                <version>${store-client.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
 
 </project>
