@@ -29,6 +29,7 @@
         <grpc.protoc.version>3.24.0</grpc.protoc.version>
         <javax.annotation.version>1.3.2</javax.annotation.version>
         <grpc.proto.maven.plugin.version>0.6.1</grpc.proto.maven.plugin.version>
+        <grpc.bcpkix-jdk18on.version>1.76</grpc.bcpkix-jdk18on.version>
         <!-- grpc -->
 
         <!--argus-core-->
@@ -184,6 +185,11 @@
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
                 <version>${commons-logging.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcpkix-jdk18on</artifactId>
+                <version>${grpc.bcpkix-jdk18on.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
