@@ -24,12 +24,11 @@
         <build-tool.path>build-tool</build-tool.path>
 
         <!-- grpc -->
-        <grpc.all.version>1.53.0</grpc.all.version>
-        <grpc.os.maven.version>1.6.2</grpc.os.maven.version>
-        <grpc.protoc.version>3.19.2</grpc.protoc.version>
+        <grpc.all.version>1.59.0</grpc.all.version>
+        <grpc.os.maven.version>1.7.1</grpc.os.maven.version>
+        <grpc.protoc.version>3.24.0</grpc.protoc.version>
         <javax.annotation.version>1.3.2</javax.annotation.version>
-        <grpc.os.maven.version>1.6.2</grpc.os.maven.version>
-        <grpc.proto.plugin.version>0.6.1</grpc.proto.plugin.version>
+        <grpc.proto.maven.plugin.version>0.6.1</grpc.proto.maven.plugin.version>
         <!-- grpc -->
 
         <!--argus-core-->

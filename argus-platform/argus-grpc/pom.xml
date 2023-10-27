@@ -53,7 +53,7 @@
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
-                <version>${grpc.proto.plugin.version}</version>
+                <version>${grpc.proto.maven.plugin.version}</version>
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:${grpc.protoc.version}:exe:${os.detected.classifier}
                     </protocArtifact>
