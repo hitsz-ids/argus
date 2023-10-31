@@ -1,6 +1,5 @@
 package io.ids.argus.store.base;
 
-import io.grpc.netty.shaded.io.netty.channel.epoll.Epoll;
 import io.grpc.netty.shaded.io.netty.channel.unix.DomainSocketAddress;
 import io.ids.argus.grpc.base.AddressType;
 import io.ids.argus.grpc.base.ArgusAddress;
@@ -9,7 +8,11 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 
+/**
+ * The Argus store address
+ */
 public class StoreAddress extends ArgusAddress {
+
     public StoreAddress() throws IOException {
         super();
     }
@@ -38,4 +41,5 @@ public class StoreAddress extends ArgusAddress {
     public String getFD() {
         return StoreProperties.get().getFD();
     }
+
 }

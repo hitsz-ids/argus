@@ -3,12 +3,17 @@ package io.ids.argus.server.base.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * The Argus Server Network error code
+ */
 public enum NetworkError implements IError {
-    UNAUTHENTICATED(11000, "模块未授权"),
-    NOT_FOUND(11001, "未找到对应模块配置"),
-    ALREADY_EXISTS(11002, "模块已经登录，请不要重复登录"),
-    NOT_FOUND_COMMAND(11003, "未找到对应的请求id"),
-    REQUEST_IS_END(11004, "请求已经结束");
+
+    UNAUTHENTICATED         (11000, "Module is not authorized."),
+    NOT_FOUND               (11001, "Corresponding module configuration not found."),
+    ALREADY_EXISTS          (11002, "The module has already been logged in, please do not log in again."),
+    NOT_FOUND_COMMAND       (11003, "The corresponding request id was not found."),
+    REQUEST_IS_END          (11004, "Request already ended.");
+
     private final int code;
     private final String msg;
 

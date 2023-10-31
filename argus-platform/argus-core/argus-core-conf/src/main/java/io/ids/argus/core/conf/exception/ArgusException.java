@@ -3,9 +3,14 @@ package io.ids.argus.core.conf.exception;
 
 import java.util.Objects;
 
+/**
+ * The parent class of all Argus exceptions
+ */
 public abstract class ArgusException extends RuntimeException {
+
     protected final IError status;
     protected final String msg;
+
     public ArgusException(IError status) {
         super(String.format("%s: %d, %s", status.getClass().getSimpleName(),
                 status.getCode(),

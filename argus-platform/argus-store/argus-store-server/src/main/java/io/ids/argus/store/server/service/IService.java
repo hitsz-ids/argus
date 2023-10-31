@@ -8,7 +8,11 @@ import io.ids.argus.store.server.session.SessionManager;
 
 import java.util.Objects;
 
+/**
+ * The Service interface
+ */
 public interface IService<T extends ArgusSqlStoreSession<?>> {
+
     default T getSqlSession() {
         var session = SessionManager.get().get(GrpcContext.getRequestId());
         if (Objects.isNull(session)) {
@@ -16,4 +20,5 @@ public interface IService<T extends ArgusSqlStoreSession<?>> {
         }
         return (T) session;
     }
+
 }

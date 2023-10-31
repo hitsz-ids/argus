@@ -6,15 +6,20 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Job Session Create Params
+ */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CreateParams {
+
     private String module;
     private String moduleVersion;
     private String params;
     private String job;
     private String name;
     private JobStoreStatusEnum status;
+
 }

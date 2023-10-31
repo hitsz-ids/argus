@@ -5,6 +5,9 @@ import io.ids.argus.core.base.module.controller.IArgusController;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * The Container of all the Argus Extension Controller
+ */
 class ArgusControllerClass {
     /**
      * The Clazz name.

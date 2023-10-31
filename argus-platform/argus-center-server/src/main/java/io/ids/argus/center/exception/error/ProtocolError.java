@@ -3,14 +3,21 @@ package io.ids.argus.center.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * Protocol Error Code
+ * <p>
+ * All protocol error code list here. Start from code 12000.
+ */
 public enum ProtocolError implements IError {
-    NOT_FOUND_MODULE(12000, "未解析到对应【module】字段"),
-    NOT_FOUND_VERSION(12001, "未解析到对应【version】字段"),
-    NOT_FOUND_NAMESPACE(12002, "未解析到对应【namespace】字段"),
-    NOT_FOUND_URL(12003, "未解析到对应【url】字段"),
-    NULL_ADDRESS(12004, "address为空"),
-    URI_ERROR(12005, "uri解析错误"),
+
+    MODULE_NOT_FOUND        (12000, "Field [module] not found, please check the params!"),
+    VERSION_NOT_FOUND       (12001, "Field [version] not found, please check the params!"),
+    NAMESPACE_NOT_FOUND     (12002, "Field [namespace] not found, please check the params!"),
+    URL_NOT_FOUND           (12003, "Field [url] not found, please check the params!"),
+    ADDRESS_IS_NULL         (12004, "Field [address] is empty, please check the params!"),
+    URI_ERROR               (12005, "Failed to parse URI, please check the params!"),
     ;
+
     private final int code;
     private final String msg;
 
@@ -28,4 +35,5 @@ public enum ProtocolError implements IError {
     public int getCode() {
         return code;
     }
+
 }

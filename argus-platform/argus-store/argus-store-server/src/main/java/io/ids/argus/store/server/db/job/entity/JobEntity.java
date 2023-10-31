@@ -10,31 +10,65 @@ import lombok.Data;
 
 import java.util.Date;
 
-@TableName("argus_job")
 @Data
 @Builder
 @AllArgsConstructor
+@TableName("argus_job")
 public class JobEntity {
+
+    /**
+     * Autoincrement ID
+     */
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Long    id;
+    /**
+     * Job module
+     */
     @TableField("module")
-    private String module;
+    private String  module;
+    /**
+     * Job module version
+     */
     @TableField("module_version")
-    private String moduleVersion;
+    private String  moduleVersion;
+    /**
+     * Job sequence
+     */
     @TableField("seq")
-    private String seq;
+    private String  seq;
+    /**
+     * Job name
+     */
     @TableField("name")
-    private String name;
+    private String  name;
+    /**
+     * Job handler name
+     */
     @TableField("job")
-    private String job;
+    private String  job;
+    /**
+     * Job params
+     */
     @TableField("params")
-    private String params;
+    private String  params;
+    /**
+     * Job Status
+     */
     @TableField("status")
     private Integer status;
+    /**
+     * Start time of Job
+     */
     @TableField("start_time")
-    private Date startTime;
+    private Date    startTime;
+    /**
+     * End time of Job
+     */
     @TableField("end_time")
-    private Date endTime;
+    private Date    endTime;
+    /**
+     * Create time of Job
+     */
     @TableField("created_time")
-    private Date createdTime;
+    private Date    createdTime;
 }

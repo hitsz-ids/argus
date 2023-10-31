@@ -7,6 +7,9 @@ import io.ids.argus.store.server.db.job.params.ListJobParams;
 import io.ids.argus.store.server.db.job.params.UpdateStatusParams;
 import io.ids.argus.store.server.service.IService;
 
+/**
+ * The GRPC Job Store Service
+ */
 public class JobStoreService extends JobStoreServiceGrpc.JobStoreServiceImplBase
         implements IService<JobSqlStoreSession> {
     @Override

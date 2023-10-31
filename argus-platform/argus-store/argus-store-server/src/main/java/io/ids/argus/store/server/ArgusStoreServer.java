@@ -11,6 +11,11 @@ import io.ids.argus.store.server.service.SessionService;
 
 import java.util.List;
 
+/**
+ * Argus Store Server
+ * <p>
+ * Define the services and interceptors of argus GRPC store server
+ */
 public class ArgusStoreServer extends ArgusGrpcServer {
     protected ArgusStoreServer(ArgusAddress address) {
         super(address);

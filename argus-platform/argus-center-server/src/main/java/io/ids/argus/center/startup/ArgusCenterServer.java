@@ -14,10 +14,15 @@ import javax.net.ssl.SSLException;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+/**
+ * The bootstrap class of Argus center server
+ */
 class ArgusCenterServer {
     public final ArgusLogger log = new ArgusLogger(ArgusCenterServer.class);
+
     private final ArgusServer argusServer;
     private final ArgusScanner scanner = new ArgusScanner();
+
     ArgusCenterServer() {
         argusServer = new ArgusServer(
                 CenterProperties.get().getPort(),
@@ -30,7 +35,7 @@ class ArgusCenterServer {
     public void start(Class<?> primarySource) throws IOException {
         scanner.scan(primarySource);
         argusServer.start();
-        log.debug("启动完成");
+        log.debug("Argus Center Server started.");
     }
 
     public void awaitTermination() throws InterruptedException {
@@ -53,4 +58,5 @@ class ArgusCenterServer {
             return null;
         }
     }
+
 }

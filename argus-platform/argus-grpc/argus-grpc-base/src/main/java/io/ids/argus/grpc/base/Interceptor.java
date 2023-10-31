@@ -2,6 +2,9 @@ package io.ids.argus.grpc.base;
 
 import io.grpc.*;
 
+/**
+ * The Argus Custom GRPC Interceptor
+ */
 public abstract class Interceptor implements ServerInterceptor {
 
     protected abstract Context intercept(Metadata metadata) throws StatusRuntimeException;
