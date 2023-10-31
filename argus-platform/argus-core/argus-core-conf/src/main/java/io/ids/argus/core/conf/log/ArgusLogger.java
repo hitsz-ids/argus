@@ -4,6 +4,9 @@ package io.ids.argus.core.conf.log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * The Logger to record information in specified format
+ */
 public class ArgusLogger {
 
     private final Logger log;

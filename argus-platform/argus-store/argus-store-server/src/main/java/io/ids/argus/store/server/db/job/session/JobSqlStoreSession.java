@@ -13,6 +13,9 @@ import io.ids.argus.store.server.session.ArgusSqlStoreSession;
 
 import java.util.*;
 
+/**
+ * Job Store Session is used to operate the database data of Job
+ */
 public class JobSqlStoreSession extends ArgusSqlStoreSession<JobMapper> {
 
     @Override
@@ -20,8 +23,13 @@ public class JobSqlStoreSession extends ArgusSqlStoreSession<JobMapper> {
         return JobMapper.class;
     }
 
+    /**
+     * Insert Job Data to Database
+     *
+     * @param params the Job create params
+     * @return job create result
+     */
     public CreateResult create(CreateParams params) {
-        var result = CreateResult.builder();
         var jobEntity = JobEntity.builder()
                 .seq(UUID.randomUUID().toString())
                 .module(params.getModule())
@@ -33,11 +41,18 @@ public class JobSqlStoreSession extends ArgusSqlStoreSession<JobMapper> {
                 .status(params.getStatus().getNumber())
                 .build();
         mapper.insert(jobEntity);
-        result.id(jobEntity.getId());
-        result.seq(jobEntity.getSeq());
-        return result.build();
+
+        return CreateResult.builder()
+                .id(jobEntity.getId())
+                .seq(jobEntity.getSeq())
+                .build();
     }
 
+    /**
+     * Update Job status
+     *
+     * @param params update job status params
+     */
     public void updateStatus(UpdateStatusParams params) {
         Date startTime = null;
         Date endTime = null;
@@ -49,6 +64,12 @@ public class JobSqlStoreSession extends ArgusSqlStoreSession<JobMapper> {
         mapper.updateStatus(params.getSeq(), params.getStatus().getNumber(), startTime, endTime);
     }
 
+    /**
+     * List Jobs By Condition
+     *
+     * @param params list job params
+     * @return jon information
+     */
     public ListJobResult listJob(ListJobParams params) {
         var jobStoreDataList = mapper.listJob(params.getModule(), params.getVersion(), params.getStatus());
         var jobList = new ArrayList<JobStoreData>();

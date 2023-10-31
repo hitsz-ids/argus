@@ -8,7 +8,11 @@ import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.Objects;
 
+/**
+ * Interceptor of Open Session Request
+ */
 public class SessionInterceptor implements ServerInterceptor {
+
     private byte[] getHeader(Metadata metadata) {
         return metadata.get(Metadata.Key.of(GrpcContext.HEADER_SESSION_TYPE, Metadata.BINARY_BYTE_MARSHALLER));
     }
@@ -19,13 +23,14 @@ public class SessionInterceptor implements ServerInterceptor {
                                                                  ServerCallHandler<ReqT, RespT> handler) {
         byte[] type = getHeader(metadata);
         if (ArrayUtils.isEmpty(type) || type.length > 4) {
-            call.close(Status.INTERNAL.withDescription("SessionType参数错误"), metadata);
+            call.close(Status.INTERNAL.withDescription("SessionType parameter error."), metadata);
             return new ServerCall.Listener<>() {
             };
         }
+
         var sessionType = SessionType.forNumber(Utils.bytesToInt(type));
         if (Objects.isNull(sessionType)) {
-            call.close(Status.UNKNOWN.withDescription("未知的SessionType"), metadata);
+            call.close(Status.UNKNOWN.withDescription("Unknown SessionType."), metadata);
             return new ServerCall.Listener<>() {
             };
         }

@@ -8,9 +8,10 @@ import io.ids.argus.store.server.exception.ArgusDatabaseException;
 import org.apache.ibatis.session.SqlSession;
 
 public abstract class ArgusSqlStoreSession<M extends BaseMapper<?>> extends ArgusStoreSession implements AutoCloseable {
+    private static final ArgusLogger log = new ArgusLogger(ArgusSqlStoreSession.class);
+
     protected final M mapper;
     private final SqlSession sqlSession;
-    private static final ArgusLogger log = new ArgusLogger(ArgusSqlStoreSession.class);
 
     protected ArgusSqlStoreSession() {
         sqlSession = DbInstance.get().getSqlSessionFactory().openSession();

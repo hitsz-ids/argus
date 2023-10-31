@@ -2,15 +2,18 @@ package io.ids.argus.core.base.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * Argus core invoke error code
+ */
 public enum InvokerError implements IError {
-    NOT_FOUND_NAMESPACE(90000, "未解析到对应module"),
-    NOT_FOUND_URL(90001, "未找到对应接口"),
-    NOT_FOUND_INVOKER(90002, "未找到对应调用方法"),
-    ERROR_INVOKE_RETURN(90003, "API接口返回值必须是接口InvokerOutput"),
-    ERROR_INVOKER_PARAMS(90004, "请求参数必须是接口InvokerArgs"),
-    ERROR_INVOKE(90005, "调用出错"),
-    ERROR_PARSE_RETURN(90006, "返回值处理错误"),
-    ERROR_INVOKE_JOB_RETURN(90007, "JOB接口返回值必须为JobEntity的子类"),
+    NOT_FOUND_NAMESPACE         (90000, "Specified module not found."),
+    NOT_FOUND_URL               (90001, "Specified URL not found."),
+    NOT_FOUND_INVOKER           (90002, "Invocation method not found."),
+    ERROR_INVOKE_RETURN         (90003, "The return value of the API interface must be the interface InvokerOutput."),
+    ERROR_INVOKER_PARAMS        (90004, "Request parameters must be interface InvokerArgs."),
+    ERROR_INVOKE                (90005, "Invoke error."),
+    ERROR_PARSE_RETURN          (90006, "Failed to parse return value."),
+    ERROR_INVOKE_JOB_RETURN     (90007, "The return value of the Job interface must be a subclass of JobEntity."),
 
     ;
     private final int code;

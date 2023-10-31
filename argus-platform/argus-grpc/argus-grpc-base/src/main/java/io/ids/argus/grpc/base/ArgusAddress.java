@@ -5,21 +5,24 @@ import java.net.SocketAddress;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Objects;
 
+/**
+ * The communicate address of Argus
+ * <p>
+ * It may be internet address or domain socket address
+ */
 public abstract class ArgusAddress {
     private final SocketAddress address;
 
+    private static final String TMP_PATH = "/tmp/";
+
     protected ArgusAddress() throws IOException {
         AddressType type = getType();
-        var sb = new StringBuilder("/tmp/");
-        sb.append(getFD());
-        if (Objects.equals(type, AddressType.INET)) {
-            address = initInetAddress(getPort());
-        } else if (Objects.equals(type, AddressType.DOMAIN)) {
-            address = innerInitDomainAddress(Paths.get(sb.toString()));
-        } else {
-            throw new IOException("network type error");
+
+        switch (type) {
+            case INET -> address = initInetAddress(getPort());
+            case DOMAIN -> address = innerInitDomainAddress(Paths.get(TMP_PATH + getFD()));
+            default -> throw new IOException("Network type error.");
         }
     }
 

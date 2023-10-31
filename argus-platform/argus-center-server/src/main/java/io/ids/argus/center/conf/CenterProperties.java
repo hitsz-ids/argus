@@ -3,10 +3,20 @@ package io.ids.argus.center.conf;
 
 import io.ids.argus.core.conf.propertie.ArgusProperties;
 
+/**
+ * Properties of Center Server
+ */
 public class CenterProperties extends ArgusProperties {
-    private static final String PROPERTIES_PATH = "argus-center.properties";
 
     private static final CenterProperties instance = new CenterProperties();
+
+    private static final String PROPERTIES_PATH         = "argus-center.properties";
+    private static final String CA_PATH                 = "ca.public";
+    private static final String SERVER_PUBLIC_KEY_PATH  = "server.public";
+    private static final String SERVER_PRIVATE_KEY_PATH = "server.pkcs8";
+    private static final String SERVER_PORT             = "server.port";
+    private static final String SERVER_MODULE_PUB_DIR   = "server.module.pub.dir";
+
 
     private CenterProperties() {
     }
@@ -21,19 +31,19 @@ public class CenterProperties extends ArgusProperties {
     }
 
     public int getPort() {
-        return getInt("server.port");
+        return getInt(SERVER_PORT);
     }
 
     public String getPublicPath() {
-        return getString("server.public");
+        return getString(SERVER_PUBLIC_KEY_PATH);
     }
 
     public String getCaPublic() {
-        return getString("ca.public");
+        return getString(CA_PATH);
     }
 
     public String getPKcs8() {
-        return getString("server.pkcs8");
+        return getString(SERVER_PRIVATE_KEY_PATH);
     }
 
     public String[] getModules() {
@@ -41,6 +51,7 @@ public class CenterProperties extends ArgusProperties {
     }
 
     public String getModulesDir() {
-        return getString("server.module.pub.dir");
+        return getString(SERVER_MODULE_PUB_DIR);
     }
+
 }

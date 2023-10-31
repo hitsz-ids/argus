@@ -1,10 +1,12 @@
 package io.ids.argus.store.server;
 
-import io.ids.argus.store.server.db.job.session.JobStoreService;
-
 import java.io.IOException;
 
+/**
+ * Argus store application starts here
+ */
 public class StoreApplication {
+
     public static void main(String[] args) {
         try {
             var bootstrap = new Bootstrap();
@@ -14,4 +16,5 @@ public class StoreApplication {
             System.exit(1);
         }
     }
+
 }

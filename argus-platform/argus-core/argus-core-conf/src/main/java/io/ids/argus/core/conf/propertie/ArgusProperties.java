@@ -8,9 +8,12 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 
+/**
+ * Properties of Argus
+ */
 public abstract class ArgusProperties {
     private final ArgusLogger log = new ArgusLogger(ArgusProperties.class);
-    private final Properties properties;
+    private final Properties  properties;
 
     public abstract String initPath();
 
@@ -20,7 +23,7 @@ public abstract class ArgusProperties {
             properties = new Properties();
             var inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
             if (inputStream == null) {
-                throw new IOException(String.format("%s文件不存在", path));
+                throw new IOException(String.format("Properties file [%s] not found!", path));
             }
             properties.load(inputStream);
         } catch (IOException e) {

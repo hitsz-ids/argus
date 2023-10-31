@@ -9,6 +9,9 @@ import io.ids.argus.store.server.session.SessionManager;
 
 import java.util.Objects;
 
+/**
+ * The observer of GRPC Session request
+ */
 public class SessionObserver implements StreamObserver<OpenRequest> {
     private final StreamObserver<OpenResponse> sender;
     private final String id;

@@ -7,10 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UpdateStatusParams {
+
     private String seq;
     private JobStoreStatusEnum status;
+
 }
