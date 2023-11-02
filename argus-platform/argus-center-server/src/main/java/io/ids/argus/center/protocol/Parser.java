@@ -13,7 +13,7 @@ public class Parser {
     public static Protocol parse(ProtocolData data) {
         var address = data.getPath();
         if (StringUtils.isBlank(address)) {
-            throw new ArgusProtocolException(ProtocolError.NULL_ADDRESS);
+            throw new ArgusProtocolException(ProtocolError.ADDRESS_IS_NULL);
         }
         Protocol protocol = new Protocol();
         var params = data.getParams();
@@ -34,19 +34,19 @@ public class Parser {
         var module = path.substring(0, index);
         path = path.substring(index + 1);
         if (StringUtils.isEmpty(module)) {
-            throw new ArgusProtocolException(ProtocolError.NOT_FOUND_MODULE);
+            throw new ArgusProtocolException(ProtocolError.MODULE_NOT_FOUND);
         }
         protocol.setModule(module);
 
         index = path.indexOf(Constants.URL_SEPARATOR);
         var version = path.substring(0, index);
         if (StringUtils.isEmpty(version)) {
-            throw new ArgusProtocolException(ProtocolError.NOT_FOUND_VERSION);
+            throw new ArgusProtocolException(ProtocolError.VERSION_NOT_FOUND);
         }
         protocol.setVersion(version);
         path = path.substring(index + 1);
         if (StringUtils.isEmpty(path)) {
-            throw new ArgusProtocolException(ProtocolError.NOT_FOUND_URL);
+            throw new ArgusProtocolException(ProtocolError.URL_NOT_FOUND);
         }
         protocol.setUrl(path);
 

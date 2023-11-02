@@ -7,11 +7,16 @@ import io.ids.argus.store.grpc.OpenResponse;
 import io.ids.argus.store.grpc.SessionServiceGrpc;
 import io.ids.argus.store.server.session.SessionManager;
 
+/**
+ * Session GRPC service
+ */
 public class SessionService extends SessionServiceGrpc.SessionServiceImplBase {
+
     @Override
     public StreamObserver<OpenRequest> open(StreamObserver<OpenResponse> responseObserver) {
         return new SessionObserver(SessionManager.get().generateId(),
                 GrpcContext.getType(),
                 responseObserver);
     }
+
 }

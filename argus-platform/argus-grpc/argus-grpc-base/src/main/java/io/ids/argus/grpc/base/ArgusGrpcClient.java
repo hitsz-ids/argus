@@ -11,7 +11,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * The Argus GRPC client
+ */
 public abstract class ArgusGrpcClient {
+
     private ManagedChannel channel;
     private final ArgusAddress address;
 

@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListJobResult {
+
     @Data
     @Builder
     @AllArgsConstructor
@@ -22,5 +23,7 @@ public class ListJobResult {
         private String job;
         private String params;
     }
+
     List<JobStoreData> list;
+
 }

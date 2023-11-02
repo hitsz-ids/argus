@@ -5,26 +5,33 @@ import io.ids.argus.store.server.exception.ArgusConfigurationException;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * The Argus store layer configuration
+ */
 @Data
 public class Configuration {
-    protected String host;
+
+    protected String  host;
     protected Integer port;
-    protected String username;
-    protected String auth;
-    protected String database;
-    protected String resource;
+    protected String  username;
+    protected String  auth;
+    protected String  database;
+    protected String  resource;
 
     Configuration() {
-        // 获取DB用户名密码
+        // Get properties from configuration files
         String host = DbProperties.get().getHost();
         if (StringUtils.isBlank(host)) {
             throw new ArgusConfigurationException(ConfigurationError.CONF_HOST_ERROR);
         }
+
         int port = DbProperties.get().getPort();
+
         String database = DbProperties.get().getDatabase();
         if (StringUtils.isBlank(database)) {
             throw new ArgusConfigurationException(ConfigurationError.CONF_DATABASE_ERROR);
         }
+
         String username = DbProperties.get().getUsername();
         if (StringUtils.isBlank(username)) {
             throw new ArgusConfigurationException(ConfigurationError.CONF_USERNAME_ERROR);
@@ -33,6 +40,7 @@ public class Configuration {
         if (StringUtils.isBlank(auth)) {
             throw new ArgusConfigurationException(ConfigurationError.CONF_AUTH_ERROR);
         }
+
         this.host = host;
         this.port = port;
         this.username = username;

@@ -3,9 +3,13 @@ package io.ids.argus.store.server.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * Argus Store Database error code
+ */
 public enum DatabaseError implements IError {
-    DATABASE_SESSION_GET_MAPPER_ERROR(31001, "获取mybatis的mapper失败"),
+    DATABASE_SESSION_GET_MAPPER_ERROR (31001, "Failed to obtain mapper of mybatis."),
     ;
+
     private final int code;
     private final String msg;
 

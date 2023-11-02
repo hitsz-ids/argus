@@ -8,6 +8,9 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * The Druid DataSource Setting
+ */
 public class DruidDataSourceFactory implements DataSourceFactory {
     private final ArgusLogger log = new ArgusLogger(DruidDataSourceFactory.class);
 

@@ -3,9 +3,14 @@ package io.ids.argus.server.base.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * The Argus module error code
+ */
 public enum ModuleError implements IError {
-    ERROR_REQUEST_TIME_OUT(13000, "请求发送超时失败"),
-    ERROR_REQUEST_INTERCEPTED(13001, "请求异常中断");
+
+    ERROR_REQUEST_TIME_OUT      (13000, "Request send timeout."),
+    ERROR_REQUEST_INTERCEPTED   (13001, "Request interrupted by exception.");
+
     private final int code;
     private final String msg;
 

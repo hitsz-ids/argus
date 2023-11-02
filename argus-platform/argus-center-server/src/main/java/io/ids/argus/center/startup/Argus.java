@@ -2,14 +2,18 @@ package io.ids.argus.center.startup;
 
 import io.ids.argus.center.exception.ArgusProtocolException;
 import io.ids.argus.center.protocol.Dispatcher;
-import io.ids.argus.center.protocol.Parser;
 import io.ids.argus.center.protocol.ProtocolData;
 import io.ids.argus.server.base.module.entity.Request;
 
+/**
+ * The actual startup class of Argus project
+ */
 public class Argus {
     private static final Argus instance = new Argus();
+
     private final ArgusCenterServer server;
     private final Dispatcher dispatcher;
+
     private Argus() {
         server = new ArgusCenterServer();
         dispatcher = new Dispatcher();

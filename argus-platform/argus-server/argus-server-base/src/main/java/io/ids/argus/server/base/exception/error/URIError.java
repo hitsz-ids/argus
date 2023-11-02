@@ -3,9 +3,14 @@ package io.ids.argus.server.base.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * Argus URI parse error code
+ */
 public enum URIError implements IError {
-    ERROR_PARSE_MODULE(10000, "module配置参数错误"),
+
+    ERROR_PARSE_MODULE(10000, "Failed to parse module configurations."),
     ;
+
     private final int code;
     private final String msg;
 

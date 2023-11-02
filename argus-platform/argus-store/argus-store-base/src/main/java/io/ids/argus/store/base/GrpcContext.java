@@ -8,6 +8,9 @@ package io.ids.argus.store.base;
 import io.grpc.Context;
 import io.ids.argus.store.grpc.SessionType;
 
+/**
+ * The Context of Argus store layer
+ */
 public class GrpcContext {
     private GrpcContext() {
         throw new UnsupportedOperationException("GrpcCommon");

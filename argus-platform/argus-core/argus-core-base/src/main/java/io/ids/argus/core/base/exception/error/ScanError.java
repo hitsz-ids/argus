@@ -2,15 +2,20 @@ package io.ids.argus.core.base.exception.error;
 
 import io.ids.argus.core.conf.exception.IError;
 
+/**
+ * Argus core scan error code
+ */
 public enum ScanError implements IError {
-    SCAN_NOT_FOUND_APPLICATION_ERROR(91001, "未找到对应的ArgusApplication"),
-    SCAN_NOT_FOUND_PKG_PATH_ERROR(91002, "未找到对应的ArgusApplication包路径"),
-    SCAN_PKG_ERROR(91003, "请设置正确的包路径"),
-    SCAN_JAR_ERROR(91004, "扫描jar文件获取失败"),
-    SCAN_NOT_FOUND_RES_ERROR(91005, "未找到文件资源"),
-    GET_URL_ERROR(91004,"url获取失败，请检查路径"),
-    GET_JAR_ERROR(91005,"jar文件不存在，请检查路径")
+
+    SCAN_NOT_FOUND_APPLICATION_ERROR    (91001, "Class ArgusApplication not found."),
+    SCAN_NOT_FOUND_PKG_PATH_ERROR       (91002, "ArgusApplication package path not found."),
+    SCAN_PKG_ERROR                      (91003, "Please set the correct package path."),
+    SCAN_JAR_ERROR                      (91004, "Failed to scan specified jar file."),
+    SCAN_NOT_FOUND_RES_ERROR            (91005, "Resource file not found."),
+    GET_URL_ERROR                       (91006,"Failed to obtain url, please check the path."),
+    GET_JAR_ERROR                       (91007,"Jar file does not exist, please check the path.")
     ;
+
     private final int code;
     private final String msg;
 

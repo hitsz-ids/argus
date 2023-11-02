@@ -7,7 +7,13 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
-public class RequestInterceptor  implements ServerInterceptor {
+/**
+ * Interceptor of GRPC request
+ * <p>
+ * This interceptor will verify the header of request.
+ */
+public class RequestInterceptor implements ServerInterceptor {
+
     private String getHeader(String key, Metadata metadata) {
         return metadata.get(Metadata.Key.of(key, Metadata.ASCII_STRING_MARSHALLER));
     }
@@ -18,13 +24,14 @@ public class RequestInterceptor  implements ServerInterceptor {
                                                                  ServerCallHandler<ReqT, RespT> handler) {
         String requestId = getHeader(GrpcContext.HEADER_REQUEST_ID, metadata);
         if (StringUtils.isBlank(requestId)) {
-            call.close(Status.INTERNAL.withDescription("RequestId参数错误"), metadata);
+            call.close(Status.INTERNAL.withDescription("The request_id parameter is not set."), metadata);
             return new ServerCall.Listener<>() {
             };
         }
+
         var session = SessionManager.get().get(requestId);
         if (Objects.isNull(session)) {
-            call.close(Status.INTERNAL.withDescription("RequestId参数错误"), metadata);
+            call.close(Status.INTERNAL.withDescription("The Session corresponding to RequestId cannot be found."), metadata);
             return new ServerCall.Listener<>() {
             };
         }

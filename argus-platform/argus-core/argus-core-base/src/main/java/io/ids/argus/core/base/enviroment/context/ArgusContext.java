@@ -10,8 +10,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
+/**
+ * The Context of Argus
+ */
 public abstract class ArgusContext extends ArgusScanner {
-
 
     private final ArgusLogger log = new ArgusLogger(ArgusContext.class);
 

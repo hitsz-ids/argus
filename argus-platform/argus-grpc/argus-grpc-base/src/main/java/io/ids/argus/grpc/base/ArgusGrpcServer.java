@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * The Argus GRPC Server
+ */
 public abstract class ArgusGrpcServer {
     private final Server server;
 

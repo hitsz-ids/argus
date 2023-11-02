@@ -1,6 +1,10 @@
 package io.ids.argus.core.conf.utils;
 
+/**
+ * Useful tools
+ */
 public class Utils {
+
     public static int bytesToInt(byte[] bytes) {
         int value = 0;
         for (int i = 0; i < 4; i++) {
