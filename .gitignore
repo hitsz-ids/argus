@@ -40,3 +40,4 @@ build/
 .DS_Store
 /certificate/output/
 /output
+argus-tests/src/main/resources/env.properties

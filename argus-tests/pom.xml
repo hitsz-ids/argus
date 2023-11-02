@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.ids.argus</groupId>
+        <artifactId>argus</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <store-server.version>1.0-SNAPSHOT</store-server.version>
+        <job-server.version>1.0-SNAPSHOT</job-server.version>
+        <http-server.version>1.0-SNAPSHOT</http-server.version>
+        <demo-service.version>1.0-SNAPSHOT</demo-service.version>
+    </properties>
+
+
+    <artifactId>argus-tests</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Argus : Tests</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.ids.argus.store</groupId>
+            <artifactId>argus-store-server</artifactId>
+            <version>${store-server.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ids.argus.job</groupId>
+            <artifactId>argus-job-server</artifactId>
+            <version>${job-server.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ids.argus</groupId>
+            <artifactId>argus-http-server</artifactId>
+            <version>${http-server.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.ids.argus.extension.demo</groupId>
+            <artifactId>demo</artifactId>
+            <version>${demo-service.version}</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
