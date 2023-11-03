@@ -10,11 +10,11 @@ import io.ids.argus.extension.demo.DemoApplication;
 import io.ids.argus.job.server.JobApplication;
 import io.ids.argus.store.server.StoreApplication;
 import okhttp3.Response;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
@@ -33,50 +33,77 @@ public class DemoIntegrationTest extends BaseHttpTest {
 
     private static final String DEMO_SERVICE_URL = EnvProperties.get().getDemoHost() + "/argus/execute";
 
-    private static final ExecutorService INTEGRATION_TEST_THREAD_POOL = new ThreadPoolExecutor(
-            8,
-            64,
-            0L,
-            java.util.concurrent.TimeUnit.MILLISECONDS,
-            new SynchronousQueue<>(),
-            new ThreadFactory() {
-                private int count = 0;
+    private static final ExecutorService INTEGRATION_TEST_THREAD_POOL = new ThreadPoolExecutor(8, 64, 0L, java.util.concurrent.TimeUnit.MILLISECONDS, new SynchronousQueue<>(), new ThreadFactory() {
+        private int count = 0;
 
-                @Override
-                public Thread newThread(Runnable r) {
-                    count++;
-                    return new Thread(r, "argus-test-" + count);
-                }
-            },
-            new java.util.concurrent.ThreadPoolExecutor.AbortPolicy()
-    );
+        @Override
+        public Thread newThread(@NotNull Runnable r) {
+            count++;
+            return new Thread(r, "argus-test-" + count);
+        }
+    }, new java.util.concurrent.ThreadPoolExecutor.AbortPolicy());
 
     @BeforeAll
     static void init() throws InterruptedException {
 
         // TODO: 2023/11/2 refactor this code inject configuration and using docker to support db service.
 
+        Semaphore storeRunning = new Semaphore(1);
+        Semaphore jobRunning = new Semaphore(0);
+        Semaphore httpRunning = new Semaphore(0);
+        Semaphore demoRunning = new Semaphore(0);
+        Semaphore mainRunning = new Semaphore(0);
+        CountDownLatch last = new CountDownLatch(1);
+
         // store server
-        CompletableFuture.runAsync(() -> StoreApplication.main(new String[0]), INTEGRATION_TEST_THREAD_POOL);
-        Thread.sleep(2000);
+        CompletableFuture.runAsync(() -> {
+            try {
+                storeRunning.acquire();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            StoreApplication.register(jobRunning::release);
+            StoreApplication.main(new String[0]);
+
+        }, INTEGRATION_TEST_THREAD_POOL);
 
         // job server
-        CompletableFuture.runAsync(() -> JobApplication.main(new String[0]), INTEGRATION_TEST_THREAD_POOL);
-        Thread.sleep(2000);
+        CompletableFuture.runAsync(() -> {
+            try {
+                jobRunning.acquire();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            JobApplication.register(httpRunning::release);
+            JobApplication.main(new String[0]);
+        }, INTEGRATION_TEST_THREAD_POOL);
 
         // http server
-        CompletableFuture.runAsync(() -> Application.main(new String[0]), INTEGRATION_TEST_THREAD_POOL);
-        Thread.sleep(2000);
+        CompletableFuture.runAsync(() -> {
+            try {
+                httpRunning.acquire();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            Application.register(demoRunning::release);
+            Application.main(new String[0]);
+        }, INTEGRATION_TEST_THREAD_POOL);
 
         // demo service
         CompletableFuture.runAsync(() -> {
             try {
+                demoRunning.acquire();
+                DemoApplication.register(mainRunning::release);
+                last.countDown();
                 DemoApplication.main(new String[0]);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }, INTEGRATION_TEST_THREAD_POOL);
-        Thread.sleep(4000);
+
+        // Wait last one boot completed.
+        last.await();
+        mainRunning.acquire();
     }
 
 
@@ -84,7 +111,7 @@ public class DemoIntegrationTest extends BaseHttpTest {
     void demoJobCase() {
         // create job
         ArgusJson param = new ArgusJson();
-        param.add("path","demo/1.0.0/test/job");
+        param.add("path", "demo/1.0.0/test/job");
         ArgusJson createParam = new ArgusJson();
         createParam.add("name", "task-" + UUID.randomUUID());
         param.add("params", createParam);
@@ -104,7 +131,7 @@ public class DemoIntegrationTest extends BaseHttpTest {
 
         // stop job
         ArgusJson param2 = new ArgusJson();
-        param2.add("path","demo/1.0.0/@stop-job@");
+        param2.add("path", "demo/1.0.0/@stop-job@");
         ArgusJson stopParam = new ArgusJson();
         stopParam.add("seq", seq.get());
         param2.add("params", stopParam);

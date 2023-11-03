@@ -3,6 +3,7 @@ package io.ids.argus.center.startup;
 import io.ids.argus.center.exception.ArgusProtocolException;
 import io.ids.argus.center.protocol.Dispatcher;
 import io.ids.argus.center.protocol.ProtocolData;
+import io.ids.argus.core.base.callback.UnaryCallback;
 import io.ids.argus.server.base.module.entity.Request;
 
 /**
@@ -23,9 +24,10 @@ public class Argus {
         return instance;
     }
 
-    public static void start(Class<?> primarySource) {
+    public static void start(Class<?> primarySource, UnaryCallback callback) {
         try {
             get().server.start(primarySource);
+            callback.call();
             get().server.awaitTermination();
         } catch (Exception e) {
             e.printStackTrace();

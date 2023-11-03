@@ -1,5 +1,6 @@
 package io.ids.argus.job.server;
 
+import io.ids.argus.core.base.callback.UnaryCallback;
 import io.ids.argus.core.conf.log.ArgusLogger;
 import io.ids.argus.job.base.JobAddress;
 import io.ids.argus.store.client.ArgusStore;
@@ -14,8 +15,9 @@ public class Bootstrap {
         ArgusStore.init();
     }
 
-    public void start() throws IOException, InterruptedException {
+    public void start(UnaryCallback callback) throws IOException, InterruptedException {
         server.start();
+        callback.call();
         log.debug("ArgusJobServer已成功启动");
         server.awaitTermination();
     }

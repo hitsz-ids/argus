@@ -26,6 +26,10 @@
             <artifactId>argus-core-conf</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.ids.argus.core</groupId>
+            <artifactId>argus-core-base</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

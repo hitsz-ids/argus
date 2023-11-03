@@ -1,5 +1,6 @@
 package io.ids.argus.store.server;
 
+import io.ids.argus.core.base.callback.UnaryCallback;
 import io.ids.argus.core.conf.log.ArgusLogger;
 import io.ids.argus.store.base.StoreAddress;
 import io.ids.argus.store.server.db.conf.DbInstance;
@@ -18,8 +19,9 @@ public class Bootstrap {
         DbInstance.get().initDb();
     }
 
-    public void start() throws IOException, InterruptedException {
+    public void start(UnaryCallback callback) throws IOException, InterruptedException {
         server.start();
+        callback.call();
         log.debug("Argus Store Server Started.");
         server.awaitTermination();
     }

@@ -19,6 +19,10 @@
             <artifactId>argus-store-base</artifactId>
         </dependency>
         <dependency>
+            <groupId>io.ids.argus.core</groupId>
+            <artifactId>argus-core-base</artifactId>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
