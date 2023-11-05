@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface API {
     /**
-     * 指定API命名空间的路径
+     * Specify the path to the API namespace
      *
      * @return url string
      */
