@@ -18,7 +18,7 @@ public class Bootstrap {
     public void start(UnaryCallback callback) throws IOException, InterruptedException {
         server.start();
         callback.call();
-        log.debug("ArgusJobServer已成功启动");
+        log.debug("ArgusJobServer started successfully.");
         server.awaitTermination();
     }
 

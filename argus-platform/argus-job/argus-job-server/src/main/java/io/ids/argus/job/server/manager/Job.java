@@ -27,7 +27,7 @@ public class Job implements Runnable {
                     .operation(Operation.EXECUTE)
                     .build());
         } catch (InterruptedException e) {
-            throw new ArgusCreateClassException("任务创建失败");
+            throw new ArgusCreateClassException("Failed to create Job.");
         }
     }
 
@@ -94,7 +94,7 @@ public class Job implements Runnable {
                     .build());
             session.commit();
         }
-        log.debug("任务：{}, 正在执行", data.seq);
+        log.debug("Job：{} is executing...", data.seq);
     }
 
     private boolean fail(Connector connector, Command command) {
@@ -115,7 +115,7 @@ public class Job implements Runnable {
                     .build());
             session.commit();
         }
-        log.debug("任务：{}, 执行失败", data.seq);
+        log.debug("Job：{} execution failed.", data.seq);
         return true;
     }
 
@@ -141,7 +141,7 @@ public class Job implements Runnable {
                     .build());
             session.commit();
         }
-        log.debug("任务：{}, 执行完成", data.seq);
+        log.debug("Job：{} execution completed.", data.seq);
         return true;
     }
 
@@ -167,7 +167,7 @@ public class Job implements Runnable {
                     .build());
             session.commit();
         }
-        log.debug("任务：{}, 已经停止", data.seq);
+        log.debug("Job：{} was stopped.", data.seq);
         return true;
     }
 

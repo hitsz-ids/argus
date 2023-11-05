@@ -53,7 +53,7 @@ public class JobService extends JobServiceGrpc.JobServiceImplBase {
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            responseObserver.onError(Status.INTERNAL.withDescription("任务调度服务异常").asException());
+            responseObserver.onError(Status.INTERNAL.withDescription("Task scheduling service error.").asException());
         }
     }
 
@@ -72,7 +72,7 @@ public class JobService extends JobServiceGrpc.JobServiceImplBase {
             if (success) {
                 responseObserver.onNext(JobStopResponse.newBuilder()
                         .setCode(Code.SUCCESS)
-                        .setMsg("任务已停止")
+                        .setMsg("Job was stopped.")
                         .build());
             } else {
                 success = JobManager.get().publishCommand(request.getSeq(),
@@ -80,12 +80,12 @@ public class JobService extends JobServiceGrpc.JobServiceImplBase {
                 if (!success) {
                     responseObserver.onNext(JobStopResponse.newBuilder()
                             .setCode(Code.ERROR)
-                            .setMsg("任务执行停止失败")
+                            .setMsg("Failed to stop the job.")
                             .build());
                 } else {
                     responseObserver.onNext(JobStopResponse.newBuilder()
                             .setCode(Code.OPERATING)
-                            .setMsg("任务正在执行停止操作")
+                            .setMsg("Job is stopping...")
                             .build());
                 }
             }

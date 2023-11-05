@@ -33,16 +33,16 @@ public class ServiceInterceptor extends ServerBaseInterceptor {
         }
         var module = configuration.validate(secret, version);
         if (Objects.isNull(module)) {
-            log.error("没有找到对应模块，请检查模块是否已经注册到中心");
+            log.error("The module was not found. Please check whether the module has been registered to the central service.");
             throw new ArgusInterceptException(NetworkError.NOT_FOUND);
         }
         LockPool.get().lock(module);
         try {
-            log.debug("模块【{}:{}】登录中",
+            log.debug("Module【{}:{}】is logging...",
                     module.getName(),
                     module.getVersion());
             if (ArgusModuleManager.get().isLogin(module)) {
-                log.error("模块已经成功登录，请不要重复注册");
+                log.error("The module has been logged in successfully, please do not login again.");
                 throw new ArgusInterceptException(NetworkError.ALREADY_EXISTS);
             }
             return GrpcContext.addModule(Context.current(), module);

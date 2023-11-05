@@ -39,7 +39,7 @@ public class ConnectObserver implements StreamObserver<OpenRequest>, Connector {
                 observer.onNext(OpenResponse.newBuilder()
                         .setData(Any.pack(LoginData.newBuilder().build()))
                         .build());
-                log.debug("模块[{}:{}]，已成功登录",
+                log.debug("Module [{}:{}], Login successfully.",
                         module.getName(),
                         module.getVersion());
             }
@@ -53,7 +53,7 @@ public class ConnectObserver implements StreamObserver<OpenRequest>, Connector {
         LockPool.get().lock(module);
         try {
             ArgusModuleManager.get().logout(module);
-            log.debug("模块[{}:{}]，已退出登录",
+            log.debug("Module [{}:{}], Logged out when onError().",
                     module.getName(),
                     module.getVersion());
         } finally {
@@ -66,7 +66,7 @@ public class ConnectObserver implements StreamObserver<OpenRequest>, Connector {
         LockPool.get().lock(module);
         try {
             ArgusModuleManager.get().logout(module);
-            log.debug("模块[{}:{}]，已退出登录",
+            log.debug("Module [{}:{}], Logged out when onCompleted().",
                     module.getName(),
                     module.getVersion());
         } finally {

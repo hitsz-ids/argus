@@ -28,7 +28,7 @@ public class Connector implements StreamObserver<JobOpenResponse> {
         var data = jobOpenResponse.getData();
         if (data.is(ConnectData.class)) {
             latch.countDown();
-            log.debug("ArgusJob服务连接成功");
+            log.debug("ArgusJob service connect success.");
         } else if (data.is(State.class)) {
             try {
                 var message = data.unpack(State.class);

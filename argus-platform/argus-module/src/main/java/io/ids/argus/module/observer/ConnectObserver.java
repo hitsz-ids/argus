@@ -34,13 +34,13 @@ public class ConnectObserver implements StreamObserver<OpenResponse> {
 
     @Override
     public void onError(Throwable throwable) {
-        log.debug("连接中心服务失败");
+        log.debug("Failed to connect Central Service.");
         listener.error(throwable);
     }
 
     @Override
     public void onCompleted() {
-        log.debug("中心服务主动关闭");
+        log.debug("Central Service shutdown after completed.");
         listener.completed();
     }
 

@@ -6,12 +6,15 @@ import io.ids.argus.core.base.exception.ArgusScannerException;
 import io.ids.argus.core.base.json.Transformer;
 import io.ids.argus.core.base.utils.Security;
 import io.ids.argus.core.conf.log.ArgusLogger;
-import io.ids.argus.core.grpc.*;
+import io.ids.argus.core.grpc.ArgusModuleData;
+import io.ids.argus.core.grpc.ArgusServiceGrpc;
+import io.ids.argus.core.grpc.FetchServiceGrpc;
+import io.ids.argus.core.grpc.OpenRequest;
+import io.ids.argus.core.grpc.RequestData;
 import io.ids.argus.job.base.ConnectorId;
 import io.ids.argus.job.client.ArgusJob;
 import io.ids.argus.job.client.job.JobEntity;
 import io.ids.argus.job.grpc.JobCommitRequest;
-import io.ids.argus.job.grpc.JobCommitResponse;
 import io.ids.argus.module.conf.ModuleProperties;
 import io.ids.argus.module.context.ModuleContext;
 import io.ids.argus.module.observer.ConnectObserver;
@@ -86,7 +89,7 @@ public class ArgusModule implements ObserverListener {
 
     @Override
     public void connected() {
-        log.debug("已经成功登录到中心服务");
+        log.debug("Logged in to the central service successfully.");
     }
 
     @Override
@@ -107,7 +110,7 @@ public class ArgusModule implements ObserverListener {
     }
 
     private void reconnect() {
-        log.debug("向中心发起重新登录请求");
+        log.debug("Send login request to central service again.");
         try {
             TimeUnit.SECONDS.sleep(RECONNECT_TIME_OUT);
         } catch (InterruptedException e) {
