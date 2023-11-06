@@ -10,7 +10,10 @@ import io.ids.argus.job.server.JobApplication;
 import io.ids.argus.store.server.StoreApplication;
 import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.RepeatedTest;
 import org.testcontainers.containers.MySQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
@@ -52,6 +55,10 @@ public class DemoIntegrationTest extends BaseHttpTest {
         // generate certificates
         String workPath = System.getProperty("user.dir") + "/src/main/resources/";
         exec(Arrays.asList("sh", workPath + "mirror_certificate.sh"), workPath);
+
+        // generate properties file if not exists
+        exec(Arrays.asList("sh", workPath + "mirror_properties.sh"), workPath);
+
         String caPath = workPath + "output/ca/ca.pem";
         String centerPublicPath = workPath + "output/center/center.pem";
         String centerPrivatePath = workPath + "output/center/center-pkcs8.key";
