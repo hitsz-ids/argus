@@ -1,7 +1,9 @@
 <configuration>
-
     <property name="logbase" value="/var/log/argus/trace" />
 
+
+    <!--  LOG LEVEL: TRACE < DEBUG < INFO < WARN < ERROR -->
+    <!--  STDOUT: LOG ALL LEVEL  -->
     <appender name="STDOUT"
               class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
@@ -10,7 +12,11 @@
         </encoder>
     </appender>
 
+    <!--  file: LOG INFO WARN ERROR  -->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
         <encoder>
             <pattern>%d{MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%method] [%line] - %msg%n</pattern>
             <charset>UTF-8</charset>
@@ -24,7 +30,12 @@
         </rollingPolicy>
     </appender>
 
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="file" />
     </root>
+
+    <logger name="io.ids.argus" level="DEBUG" additivity="true">
+    </logger>
+
 </configuration>
