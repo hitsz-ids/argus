@@ -35,11 +35,11 @@ public abstract class ArgusContext extends ArgusScanner {
     }
 
     /**
-     * 执行反射调用（执行json的方法）
+     * Do invoke（execute json method）
      *
-     * @param data 参数内容
-     * @return 执行结果 string
-     * @throws ArgusInvokerException 抛出调用错误的异常
+     * @param data Invoke params
+     * @return result string
+     * @throws ArgusInvokerException Invoker Exception
      */
     private String innerInvoke(Invoker.Data data) throws ArgusInvokerException {
         var url = data.url();

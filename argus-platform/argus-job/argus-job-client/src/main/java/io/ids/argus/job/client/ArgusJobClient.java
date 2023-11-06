@@ -52,7 +52,7 @@ class ArgusJobClient extends ArgusGrpcClient implements ConnectorListener {
 
     @Override
     public void reconnect() {
-        log.debug("ArgusJob服务连接失败, 准备发起重连");
+        log.debug("ArgusJob service connect failed, reconnecting...");
         try {
             TimeUnit.SECONDS.sleep(8);
         } catch (InterruptedException e) {

@@ -9,7 +9,7 @@ import io.ids.argus.server.base.utils.GrpcContext;
 public class ConnectService extends ArgusServiceGrpc.ArgusServiceImplBase {
     @Override
     public StreamObserver<OpenRequest> open(StreamObserver<OpenResponse> responseObserver) {
-        // 登录对应模块
+        // Module login
         var argusModule  = GrpcContext.getModule();
         return new ConnectObserver(argusModule, responseObserver);
     }
