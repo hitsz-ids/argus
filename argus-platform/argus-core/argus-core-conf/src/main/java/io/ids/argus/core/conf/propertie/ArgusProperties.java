@@ -37,7 +37,12 @@ public abstract class ArgusProperties {
         Map<String, String> envs = System.getenv();
         String result = envs.get(envKey);
         if (result == null) {
-            result = properties.getProperty(key);
+            // if system env null, get from system properties.
+            result = System.getProperty(key);
+            if (result == null) {
+                // if system env & system properties null, get from properties file.
+                result = properties.getProperty(key);
+            }
         }
         return result == null ? "" : result;
     }

@@ -37,6 +37,11 @@
             <artifactId>okio</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.testcontainers</groupId>
+            <artifactId>mysql</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>io.ids.argus.store</groupId>
             <artifactId>argus-store-server</artifactId>
             <version>${store-server.version}</version>

@@ -40,4 +40,8 @@ build/
 .DS_Store
 /certificate/output/
 /output
+
+### argus-tests ###
 argus-tests/src/main/resources/env.properties
+argus-tests/src/main/resources/output/
+argus-tests/src/main/resources/generate.sh

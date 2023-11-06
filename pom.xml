@@ -63,6 +63,7 @@
         <jssql.version>4.4</jssql.version>
         <okhttp3.version>4.12.0</okhttp3.version>
         <okio.version>3.6.0</okio.version>
+        <testcontainer.jdbc.version>1.19.1</testcontainer.jdbc.version>
         <!--    tool    -->
 
         <!--    plugin    -->
@@ -214,6 +215,12 @@
                 <groupId>com.squareup.okio</groupId>
                 <artifactId>okio</artifactId>
                 <version>${okio.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>mysql</artifactId>
+                <version>${testcontainer.jdbc.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

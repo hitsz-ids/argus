@@ -14,8 +14,9 @@ public class CenterProperties extends ArgusProperties {
     private static final String CA_PATH                 = "ca.public";
     private static final String SERVER_PUBLIC_KEY_PATH  = "server.public";
     private static final String SERVER_PRIVATE_KEY_PATH = "server.pkcs8";
-    private static final String SERVER_PORT             = "server.port";
+    private static final String SERVER_PORT             = "center.server.port";
     private static final String SERVER_MODULE_PUB_DIR   = "server.module.pub.dir";
+    private static final String HTTP_SERVER_PORT   = "http.server.port";
 
 
     private CenterProperties() {
@@ -52,6 +53,10 @@ public class CenterProperties extends ArgusProperties {
 
     public String getModulesDir() {
         return getString(SERVER_MODULE_PUB_DIR);
+    }
+
+    public String getHTTPServerPort() {
+        return getString(HTTP_SERVER_PORT);
     }
 
 }
