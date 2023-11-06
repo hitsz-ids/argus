@@ -1,5 +1,5 @@
 ca.public =
-server.port =
+center.server.port =
 server.public =
 server.pkcs8 =
 server.module.pub.dir =
