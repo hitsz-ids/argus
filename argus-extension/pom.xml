@@ -16,6 +16,7 @@
 
     <modules>
         <module>demo</module>
+        <module>model-checking</module>
     </modules>
 
     <properties>

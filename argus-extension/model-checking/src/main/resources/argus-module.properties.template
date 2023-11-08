@@ -1,0 +1,12 @@
+center.host = 127.0.0.1
+center.port = 9999
+module.name = modelchecking
+module.version = 1.0.0
+
+module.public = argus/output/module/module.pem
+ca.public = argus/output/ca/ca.pem
+module.pkcs8 = argus/output/module/module-pkcs8.key
+
+model.files = argus/argus-extension/model-checking/model-files
+scan.result = argus/argus-extension/model-checking/scan-result
+model.check = argus/argus-extension/model-checking/model-checking/dist
