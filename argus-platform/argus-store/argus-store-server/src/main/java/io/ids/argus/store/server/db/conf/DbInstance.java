@@ -19,12 +19,14 @@ public class DbInstance {
     }
 
     public static DbInstance get() {
+        System.out.println("instance:"+instance);
         return instance;
     }
 
     private SqlSessionFactory sqlSessionFactory;
 
     public SqlSessionFactory getSqlSessionFactory() {
+        System.out.println("sqlSessionFactory:"+sqlSessionFactory);
         return sqlSessionFactory;
     }
 

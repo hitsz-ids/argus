@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.ids.argus.store.grpc.file";
+option objc_class_prefix = "ArgusStoreFile";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+
+service FileUploadStoreService {
+  rpc upload (stream UploadRequest) returns (stream UploadResponse) {}
+}
+
+//service FileStoreService {
+//  rpc createFile (CreateFileRequest) returns (CreateFileResponse) {}
+//}
+//message CreateFileRequest {
+//  string moduleName = 1;
+//  string moduleVersion = 2;
+//  string directoryName = 3;
+//  string fileName = 4;
+//}
+//message CreateFileResponse {
+//  int64 id = 1;
+//  string fileId = 2;
+//}
+message UploadRequest {
+  message Ready {
+    string fileName = 1;
+    string moduleName = 2;
+    string extensionName = 3;
+    string directoryName = 4;
+    int64 size = 5;
+  }
+  message Upload {
+    bytes bytes = 1;
+    int64 len = 2;
+  }
+  message Save {}
+  message Close{}
+
+  oneof Result{
+    Ready ready = 1;
+    Upload upload = 2;
+    Save save = 3;
+    Close close = 4;
+  }
+}
+
+message UploadResponse {
+  message Ready{}
+  message Uploading{}
+  message Save {}
+  message Close{}
+  oneof Result {
+    Ready ready = 1;
+    Uploading uploading = 2;
+    Save save = 3;
+    Close close = 4;
+  }
+}
+
+
+
+service FileDownloadStoreService {
+  rpc download (stream DownloadRequest) returns (stream DownloadResponse) {}
+}
+
+message DownloadRequest {
+  message Ready {
+    string fileName = 1;
+    string moduleName = 2;
+    string extensionName = 3;
+    string directoryName = 4;
+  }
+  message Download {
+    int32  len = 1;
+  }
+  message Success{}
+  message FAIL{}
+
+  oneof Result{
+    Ready ready = 1;
+    Download download = 2;
+    Success success = 3;
+    FAIL fail = 4;
+  }
+}
+
+message DownloadResponse {
+  message Ready{}
+  message Download {
+    bytes byte = 1;
+    int32 len = 2;
+  }
+  message Success{}
+  message Fail{}
+  oneof Result {
+    Ready ready = 1;
+    Download download = 2;
+    Success success = 3;
+    Fail fail = 4;
+  }
+}

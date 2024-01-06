@@ -46,4 +46,20 @@ public class BaseHttpTest implements BaseTest {
             return null;
         }
     }
+    protected Response put(String url, String requestBody) {
+
+        RequestBody body = RequestBody.create(requestBody.getBytes(StandardCharsets.UTF_8));
+        Request request = new Request.Builder()
+                .url(url)
+                .header("Content-Type", "application/json; charset=UTF-8")
+                .put(body)
+                .build();
+
+        try {
+            return client.newCall(request).execute();
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+            return null;
+        }
+    }
 }

@@ -23,6 +23,22 @@
             <groupId>io.ids.argus.store</groupId>
             <artifactId>argus-store-base</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>6.0.13</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.ids.argus.store</groupId>
+            <artifactId>argus-store-server</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -17,6 +17,10 @@
             <groupId>io.ids.argus.job</groupId>
             <artifactId>argus-job-base</artifactId>
         </dependency>
+        <dependency>
+            <groupId>io.ids.argus.store</groupId>
+            <artifactId>argus-store-client</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

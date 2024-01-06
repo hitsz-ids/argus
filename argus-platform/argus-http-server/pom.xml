@@ -55,6 +55,10 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>io.ids.argus.store</groupId>
+            <artifactId>argus-store-client</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

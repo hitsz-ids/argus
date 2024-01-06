@@ -1,5 +1,3 @@
-scan-result
-model-files
-model-checking
+modelchecking
 
 src/main/resources/argus-module.properties

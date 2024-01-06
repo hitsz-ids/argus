@@ -4,10 +4,10 @@ package io.ids.argus.extension.demo.controller;
 import io.ids.argus.core.base.module.annotation.API;
 import io.ids.argus.core.base.module.annotation.ArgusController;
 import io.ids.argus.core.base.module.controller.IArgusController;
-import io.ids.argus.extension.demo.controller.test.job.DemoTestJobArgs;
-import io.ids.argus.extension.demo.controller.test.returns.DemoReturnsOutput;
-import io.ids.argus.extension.demo.controller.test.DemoArgs;
-import io.ids.argus.extension.demo.controller.test.job.DemoTestJobEntity;
+import io.ids.argus.extension.demo.controller.condition.DemoArgs;
+import io.ids.argus.extension.demo.controller.condition.job.DemoTestJobArgs;
+import io.ids.argus.extension.demo.controller.condition.job.DemoTestJobEntity;
+import io.ids.argus.extension.demo.controller.condition.returns.DemoReturnsOutput;
 import io.ids.argus.extension.demo.job.DemoTestJobParams;
 
 @ArgusController

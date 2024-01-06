@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.ids.argus.store.server.db.file.FileMapper">
+
+    <select id="selectFileIdByFileName" resultType="java.lang.String">
+        SELECT `file_id` FROM `argus_file` WHERE `file_name` = #{fileName}
+        and `module` = #{module} and `module_version` = #{moduleVersion} and `directory` = #{directory}
+        and `is_deleted` = 0
+        limit 1
+    </select>
+
+    <select id="selectFileByStatus" resultType="io.ids.argus.store.server.db.file.entity.FileEntity">
+        SELECT * FROM `argus_file` WHERE `status` = #{status} and `is_deleted` = 0
+    </select>
+</mapper>

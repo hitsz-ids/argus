@@ -38,8 +38,11 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+### argus ###
 /certificate/output/
 /output
+/storage
 
 ### argus-tests ###
 argus-tests/src/main/resources/env.properties
