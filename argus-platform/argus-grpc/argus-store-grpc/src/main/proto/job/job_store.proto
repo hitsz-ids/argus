@@ -18,9 +18,9 @@ enum JobStoreStatusEnum {
   STOPPING = 3;
   STOPPED = 4;
   FAILING = 5;
-  FAILED = 7;
-  COMPLETED = 9;
-  COMPLETING = 8;
+  FAILED = 6;
+  COMPLETING = 7;
+  COMPLETED = 8;
 }
 message CreateRequest {
   string module = 1;

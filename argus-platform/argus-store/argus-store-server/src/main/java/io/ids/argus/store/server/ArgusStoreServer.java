@@ -4,6 +4,8 @@ import io.grpc.ServerInterceptors;
 import io.grpc.ServerServiceDefinition;
 import io.ids.argus.grpc.base.ArgusAddress;
 import io.ids.argus.grpc.base.ArgusGrpcServer;
+import io.ids.argus.store.server.db.file.session.DownloadSessionService;
+import io.ids.argus.store.server.db.file.session.UploadSessionService;
 import io.ids.argus.store.server.db.job.session.JobStoreService;
 import io.ids.argus.store.server.interceptor.RequestInterceptor;
 import io.ids.argus.store.server.interceptor.SessionInterceptor;
@@ -28,6 +30,12 @@ public class ArgusStoreServer extends ArgusGrpcServer {
                 new SessionInterceptor()));
         list.add(ServerInterceptors.intercept(
                 new JobStoreService(),
+                new RequestInterceptor()));
+        list.add(ServerInterceptors.intercept(
+                new UploadSessionService(),
+                new RequestInterceptor()));
+        list.add(ServerInterceptors.intercept(
+                new DownloadSessionService(),
                 new RequestInterceptor()));
     }
 }
