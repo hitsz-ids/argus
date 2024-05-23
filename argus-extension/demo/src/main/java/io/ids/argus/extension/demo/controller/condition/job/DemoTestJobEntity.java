@@ -1,4 +1,4 @@
-package io.ids.argus.extension.demo.controller.test.job;
+package io.ids.argus.extension.demo.controller.condition.job;
 
 import io.ids.argus.extension.demo.job.DemoTestJob;
 import io.ids.argus.extension.demo.job.DemoTestJobParams;

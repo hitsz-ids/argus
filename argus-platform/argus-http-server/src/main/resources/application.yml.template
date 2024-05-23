@@ -2,3 +2,9 @@ server:
   port: 9000
 logging:
   config: classpath:logback.xml
+
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB

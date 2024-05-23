@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.ids.argus.store.server.db.file.FileMapper">
+    <!-- 根据file_id查询 -->
+    <select id="selectFileByFileId" resultType="io.ids.argus.store.server.db.file.result.SelectFileResult">
+        SELECT * FROM `argus_file`
+        where `file_id` =  #{fileId}
+    </select>
+
+    <!-- 根据file_id查询 更新status -->
+    <update id="updateStatus">
+        UPDATE `argus_file` SET `status` = #{status}
+        WHERE `file_id` = #{fileId}
+    </update>
+</mapper>

@@ -1,4 +1,4 @@
-package io.ids.argus.extension.demo.controller.test;
+package io.ids.argus.extension.modelchecking.controller.condition.args;
 
 import io.ids.argus.core.base.enviroment.invoker.IInvokeArgs;
 import lombok.AllArgsConstructor;
@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DemoArgs implements IInvokeArgs {
-    private String a;
+public class ModelCheckingValidateArgs implements IInvokeArgs {
+    private String fileName;
 }

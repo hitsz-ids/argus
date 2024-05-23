@@ -1,4 +1,4 @@
-package io.ids.argus.extension.demo.controller.test.returns;
+package io.ids.argus.extension.demo.controller.condition.returns;
 
 import io.ids.argus.core.base.enviroment.invoker.IInvokeOutput;
 import lombok.Data;

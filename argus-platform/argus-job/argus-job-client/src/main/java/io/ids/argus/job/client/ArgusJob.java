@@ -4,7 +4,6 @@ import io.ids.argus.job.base.ConnectorId;
 import io.ids.argus.job.base.JobAddress;
 import io.ids.argus.job.client.error.JobError;
 import io.ids.argus.job.client.exception.ArgusJobException;
-import io.ids.argus.job.grpc.Code;
 import io.ids.argus.job.grpc.JobCommitRequest;
 import io.ids.argus.job.grpc.JobCommitResponse;
 import io.ids.argus.job.grpc.JobStopResponse;

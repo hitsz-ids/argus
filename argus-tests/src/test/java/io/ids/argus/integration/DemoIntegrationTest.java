@@ -143,7 +143,11 @@ public class DemoIntegrationTest extends BaseHttpTest {
                 throw new RuntimeException(e);
             }
             Application.register(demoRunning::release);
-            Application.main(new String[0]);
+            try {
+                Application.main(new String[0]);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }, INTEGRATION_TEST_THREAD_POOL);
 
         // demo service
